@@ -46,6 +46,3 @@ allTheButtons.forEach(button => button.addEventListener('click', amIHidden))
 allTheButtons.forEach(button => button.addEventListener('touch', amIHidden))
 
 //grabs the parentGrid section 
-const parentGrid = document.querySelector('#parentGrid')
-
-console.log(parentGrid)

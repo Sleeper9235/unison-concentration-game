@@ -31,7 +31,7 @@ button {
     margin: auto;
     display: flex;
     flex-wrap: wrap;
-    position: relative;
+    position: absolute;
 }
 .threeByThree.iAmHiddenNow {
     visibility: hidden;
@@ -68,7 +68,9 @@ button {
 
 #parentGrid {
     display: flex;
-    position: relative;
+    flex-wrap: wrap;
+    justify-content: center;
+    
 }
 
 #start {
