@@ -8,36 +8,83 @@
     <link rel="stylesheet" href="CSS/style.css" />
 </head>
 <body>
-    <section id="landing">
+    <section id="landing" >
         <h1 id="title" >Unison</h1>
         <h2 id="subTitle">The tonal matching game</h2>
         <div class="buttons">
-            <button class="button" id="start">START</button></a>
             <button class="button" id="instruction">Instructions</button>
         </div>
     </section>
     <section id="difficulty">
         <h3 id="message">Select your difficulty!</h3>
         <p>Generic text describing the difficulties and what to do on this page</p>
+        <br />
+        <br />
         <button class="difficulty" id="practiceDifficulty">2X2</button>
         <button class="difficulty" id="easyDifficulty">3x3</button>
         <button class="difficulty" id="mediumDifficulty">4x4</button>
         <button class="difficulty" id="hardDifficulty">5x5</button>
     </section>
-    <section class="twoByTwo">
-        <div class="game-object">
-            <div class="eachObject" id="1"></div>
+    <section id="parentGrid">
+        <div class="twoByTwo iAmHiddenNow">
+            <div class="game-object-2by2">
+                <div class="eachObject" id="1"></div>
+            </div>
+            <div class="game-object-2by2">
+                <div class="eachObject" id="2"></div>
+            </div>
+            <div class="game-object-2by2">
+                <div class="eachObject" id="3"></div>
+            </div>
+            <div class="game-object-2by2">
+                <div class="eachObject" id="4"></div>
+            </div>
         </div>
-        <div class="game-object">
-            <div class="eachObject" id="2"></div>
-        </div>
-        <div class="game-object">
-            <div class="eachObject" id="3"></div>
-        </div>
-        <div class="game-object">
-            <div class="eachObject" id="4"></div>
+
+        <div class="threeByThree iAmHiddenNow">
+            <div class="game-object-3by3">
+                <div class="eachObject" id="1"></div>
+            </div>
+
+            <div class="game-object-3by3">
+                <div class="eachObject" id="2"></div>
+            </div>
+
+            <div class="game-object-3by3">
+                <div class="eachObject" id="3"></div>
+            </div>
+
+            <div class="game-object-3by3">
+                <div class="eachObject" id="4"></div>
+            </div>
+
+            <div class="game-object-3by3">
+                <div class="eachObject" id="5" hidden></div>
+            </div>
+
+            <div class="game-object-3by3">
+                <div class="eachObject" id="6"></div>
+            </div>
+
+            <div class="game-object-3by3">
+                <div class="eachObject" id="7"></div>
+            </div>
+
+            <div class="game-object-3by3">
+                <div class="eachObject" id="8"></div>
+            </div>
+
+            <div class="game-object-3by3">
+                <div class="eachObject" id="9"></div>
+            </div>
+
         </div>
     </section>
-    
+<br />
+
+    <div class="buttons">
+        <button class="button" id="start">START</button></a>
+
+    </div>
 </body>
 </html>
