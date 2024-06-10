@@ -31,6 +31,15 @@ button#continueButton{
     text-align: center;
 }
 
+#eight #hidden{
+    visibility: hidden;
+}
+
+
+#start {
+    position: relative;
+}
+
 .twoByTwo {
     width: 300px;
     height: 300px;
@@ -78,17 +87,6 @@ button#continueButton{
     opacity: 0.75;
     background-color: #BFB6BB;
 }
-
-#eight #hidden{
-    visibility: hidden;
-}
-
-
-#start {
-    position: relative;
-}
-
-
 
 .vline
 {

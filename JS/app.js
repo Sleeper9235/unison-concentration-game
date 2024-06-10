@@ -1,6 +1,12 @@
 
 let userSelectionOne = {}
 let userSelectionTwo = {}
+let segmentEnd
+
+//audio
+
+const c = new Audio("")
+
 
 //grabs the instruction dialog box
 const dialog = document.getElementById('instructionBox')
@@ -22,7 +28,21 @@ const myObjects = document.querySelectorAll('.eachObject')
 
 //function to change object color and play sound
 function changeColor() {
-    this.classList.toggle('change')
+    //to change the objects color
+    this.classList.toggle('change');
+    //to play the sound from the chosen object
+    if (segmentEnd && c.currentTime <= segmentEnd) {
+        c.play();
+    }   
+    console.log(c.currentTime);
+
+
+}
+
+function playSegment(startTime, endTime){
+    segmentEnd = endTime;
+    c.currentTime = startTime;
+    c.play();
 }
 
 //function for buttons to toggle visibility
@@ -51,6 +71,8 @@ function closeInstructions() {
         return
     }
 }
+console.log(myObjects)
+
 
 //forEach loop to iterate through the buttons and add an event listener and a function to each.
 allTheButtons.forEach(button => button.addEventListener('click', amIHidden))
