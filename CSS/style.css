@@ -1,39 +1,56 @@
 body {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    /* background-repeat: no-repeat; */
     margin: 0;
     height: 100vh;
 }
 
+section {
+    display: flex;
+    justify-content: center;
+}
 button {
     background-color:argb(34, 51, 45);
     padding: 20px;
     border-radius: 12px;
 }
 
+button#continueButton{
+    background-color:argb(34, 51, 45);
+    padding: 7px;
+    border-radius: 12px;
+}
+
+#landing {
+    text-align: center;
+}
+
+#parentGrid {
+    display: flex;
+}
+
+#selectYourDifficulty h3{
+    text-align: center;
+}
 
 .twoByTwo {
     width: 300px;
     height: 300px;
-    margin: auto;
+    margin-left: 11px;
     display: flex;
     flex-wrap: wrap;
     position: relative;
+    
 }
-.twoByTwo.iAmHiddenNow {
-    visibility: hidden;
-}
+
 .threeByThree {
     width: 300px;
     height: 300px;
-    margin: auto;
+    margin-left: 11px;
     display: flex;
     flex-wrap: wrap;
     position: absolute;
+
 }
-.threeByThree.iAmHiddenNow {
+.iAmHiddenNow {
     visibility: hidden;
 }
 .game-object-2by2 {
@@ -44,10 +61,10 @@ button {
 }
 
 .game-object-3by3 {
-    width: calc(33.33% - 15px);
-    height: calc(33.33% - 15px);
+    width: calc(33.33% - 13.3px);
+    height: calc(33.33% - 13.3px);
     margin: 5px;
-    position: relative
+    position: relative;
 }
 .eachObject {
     width: 100%;
@@ -66,13 +83,20 @@ button {
     visibility: hidden;
 }
 
-#parentGrid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    
-}
 
 #start {
     position: relative;
+}
+
+
+
+.vline
+{
+    position:fixed;
+    top:0;
+    left:50%;
+    bottom:0; margin:0;
+    border:none;
+    border-right:solid 1px black;
+    z-index:10;
 }

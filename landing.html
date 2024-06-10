@@ -8,22 +8,45 @@
     <link rel="stylesheet" href="CSS/style.css" />
 </head>
 <body>
+
+    <hr class="vline" />
+
     <section id="landing" >
-        <h1 id="title" >Unison</h1>
-        <h2 id="subTitle">The tonal matching game</h2>
-        <div class="buttons">
-            <button class="button" id="instruction">Instructions</button>
+        <div id="titleSection">
+            <h1 id="title" >Unison</h1>
+            <h2 id="subTitle">The tonal matching game</h2>
         </div>
     </section>
-    <section id="difficulty">
-        <h3 id="message">Select your difficulty!</h3>
-        <p>Generic text describing the difficulties and what to do on this page</p>
-        <br />
-        <br />
-        <button class="difficulty" id="practiceDifficulty">2X2</button>
-        <button class="difficulty" id="easyDifficulty">3x3</button>
-        <button class="difficulty" id="mediumDifficulty">4x4</button>
-        <button class="difficulty" id="hardDifficulty">5x5</button>
+    <section id="instructionsSection">
+            <div class="buttons">
+                <button class="button" id="instruction">Instructions</button>
+            
+                <dialog id="instructionBox">
+                    <h3>Welcome to Unison!</h3>
+                    <p>Game overview and instructions</p>
+                    <label for="instructionsCheckBox">I have read the instructions</label>
+                    <input type="checkbox" id="instructionsCheckBox" autofocus>
+                    <button id="continueButton">Continue</button>
+                </dialog>
+            </div>
+    </section>
+    <section id="selectYourDifficulty">
+        <div>
+            <h3 id="message">Select your difficulty!</h3>
+        </div>
+    </section>
+    <section id=""difficultyButtons>
+        <div>
+            <button class="difficulty" id="practiceDifficulty">2X2</button>
+            <button class="difficulty" id="easyDifficulty">3x3</button>
+            <button class="difficulty" id="mediumDifficulty">4x4</button>
+            <button class="difficulty" id="hardDifficulty">5x5</button>
+        </div>
+    </section>
+    <section id="timer">
+            <div>
+                <h3>Timer: mm:ss</h3>
+            </div>
     </section>
     <section id="parentGrid">
         <div class="twoByTwo iAmHiddenNow">
@@ -40,7 +63,6 @@
                 <div class="eachObject" id="4"></div>
             </div>
         </div>
-
         <div class="threeByThree iAmHiddenNow">
             <div class="game-object-3by3">
                 <div class="eachObject" id="1"></div>
@@ -80,11 +102,11 @@
 
         </div>
     </section>
-<br />
+    <section id="startButton">
+        <div class="buttons">
+            <button class="button" id="start">START</button></a>
 
-    <div class="buttons">
-        <button class="button" id="start">START</button></a>
-
-    </div>
+        </div>
+    </section>
 </body>
 </html>
