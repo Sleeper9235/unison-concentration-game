@@ -21,7 +21,9 @@ button#continueButton{
 h3 {
     margin: 10px;
 }
-
+div {
+    margin: auto;
+}
 #landing {
     text-align: center;
 }
@@ -34,14 +36,10 @@ h3 {
     text-align: center;
 }
 
-#eight #hidden{
-    visibility: hidden;
+#startButton {
+
 }
 
-
-#start {
-    position: relative;
-}
 
 .twoByTwo {
     width: 300px;
@@ -49,7 +47,7 @@ h3 {
     margin-left: 11px;
     display: flex;
     flex-wrap: wrap;
-    position: relative;
+    position: absolute;
     
 }
 
@@ -62,8 +60,29 @@ h3 {
     position: absolute;
 
 }
+
+.fourByFour {
+    width: 400px;
+    height: 400px;
+    margin-left: 11px;
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    
+}
+
+.fiveByFive {
+    width: 400px;
+    height: 400px;
+    margin-left: 11px;
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+
+}
 .iAmHiddenNow {
     visibility: hidden;
+    height: 0;
 }
 .game-object-2by2 {
     width: calc(50% - 15px);
@@ -83,19 +102,56 @@ h3 {
     background-color: #36393B;
 }
 
+.game-object-4by4 {
+    width: calc(25% - 11px);
+    height: calc(25% - 11px);
+    margin: 5px;
+    position: relative;
+    border-radius: 5px;
+    background-color: #36393B;
+}
+
+.game-object-5by5 {
+    width: calc(18% - 6px);
+    height: calc(18% - 6px);
+    margin: 5px;
+    position: relative;
+    border-radius: 5px;
+    background-color: #36393B;
+}
+
+
 .game-object-2by2.change{
     background-color: #BFB6BB;
 }
 
 .game-object-2by2.change.vanish{
     visibility: hidden;
+    
 }
 
 .game-object-3by3.change{
     background-color: #BFB6BB;
+    
 }
 
 .game-object-3by3.change.vanish{
+    visibility: hidden;
+}
+
+.game-object-4by4.change{
+    background-color: #BFB6BB;
+}
+
+.game-object-4by4.change.vanish{
+    visibility: hidden;
+}
+
+.game-object-5by5.change{
+    background-color: #BFB6BB;
+}
+
+.game-object-5by5.change.vanish{
     visibility: hidden;
 }
 
