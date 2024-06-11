@@ -38,6 +38,10 @@ const restartDialog = document.getElementById('youWin')
 const restartButton = document.getElementById('restartButton')
 //grab the close button in the instructions popup box
 const closeInstructionButton = document.getElementById('continueButton')
+//grabs the youLose dialog box
+const youLoseBox = document.getElementById('youLose')
+//grabs the button in the youLose dialog box
+const loseButton = document.getElementById('loseButton')
 //grabs the check box
 const checkBox = document.getElementById('instructionsCheckBox')
 //grabs all the buttons by class name
@@ -100,11 +104,7 @@ function toggleInstructions() {
 
 //function to close the instructions. Function only runs of checkbox in dialog is selected 
 function closeInstructions() {
-    if(checkBox.checked === true) {
         instructionDialog.close();
-    } else {
-        return
-    }
 }
 
 
@@ -118,7 +118,12 @@ function playGame() {
         function countdown() {
             if (timeLeft == -1) {
                 clearTimeout(timerId);
-                console.log('You lose')
+                youLoseBox.showModal()
+                clearTimeout(timerId)
+                loseButton.addEventListener('click', function()  {
+                    youLoseBox.close();
+                    location.reload();
+                }) 
             } else {
                 timer.innerHTML = `Time Remaining: ${timeLeft}`;
                 timeLeft--;
@@ -175,7 +180,12 @@ function playGame() {
         function countdown() {
             if (timeLeft == -1) {
                 clearTimeout(timerId);
-                console.log('You lose')
+                youLoseBox.showModal()
+                clearTimeout(timerId)
+                loseButton.addEventListener('click', function()  {
+                    youLoseBox.close();
+                    location.reload();
+                }) 
             } else {
                 timer.innerHTML = `Time Remaining: ${timeLeft}`;
                 timeLeft--;
@@ -232,7 +242,12 @@ function playGame() {
         function countdown() {
             if (timeLeft == -1) {
                 clearTimeout(timerId);
-                console.log('You lose')
+                youLoseBox.showModal()
+                clearTimeout(timerId)
+                loseButton.addEventListener('click', function()  {
+                    youLoseBox.close();
+                    location.reload();
+                }) 
             } else {
                 timer.innerHTML = `Time Remaining: ${timeLeft}`;
                 timeLeft--;
@@ -288,7 +303,12 @@ function playGame() {
         function countdown() {
             if (timeLeft == -1) {
                 clearTimeout(timerId);
-                console.log('You lose')
+                youLoseBox.showModal()
+                clearTimeout(timerId)
+                loseButton.addEventListener('click', function()  {
+                    youLoseBox.close();
+                    location.reload();
+                }) 
             } else {
                 timer.innerHTML = `Time Remaining: ${timeLeft}`;
                 timeLeft--;
@@ -342,10 +362,6 @@ function playGame() {
         return
     }
 }
-
-    //shuffle notes in the two by two grid
-    
-
 
 /**********Event Listeners**********/
 
