@@ -13,32 +13,33 @@ const aNote = new Audio("assets/audio/A.mp3")
 const aSharpNote = new Audio("assets/audio/As.mp3")
 const bNote = new Audio("assets/audio/B.mp3")
 
-//Notes in an array
-const allTheNotes = [cNote, cSharpNote, dNote, dSharpNote, eNote, fNote, fSharpNote, gNote, gSharpNote, aNote, aSharpNote, bNote]
+//Notes in each difficulty array
+const twoByTwoNotes = [cNote, cNote, cSharpNote, cSharpNote]
 
+const threeByThreeNotes = [cNote, cNote, cSharpNote, cSharpNote, dNote, dNote, dSharpNote, dSharpNote]
+
+const fourByFourNotes = [cNote, cNote, cSharpNote, cSharpNote, dNote, dNote, dSharpNote, dSharpNote, eNote, eNote, fNote, fNote, fSharpNote, fSharpNote, gNote, gNote]
+
+const fiveByFiveNotes = [cNote, cNote, cSharpNote, cSharpNote, dNote, dNote, dSharpNote, dSharpNote, eNote, eNote, fNote, fNote, fSharpNote, fSharpNote, gNote, gNote, gSharpNote, gSharpNote, aNote, aNote, aSharpNote, aSharpNote, bNote, bNote]
 
 /**********Variables**********/
-let userSelectionOne = {}
-let userSelectionTwo = {}
+let userSelectionOne = null
+let userSelectionTwo = null
+
 let segmentEnd
 let randomNote
 
-//2x2 
-
-let noteOne = null
-let noteTwo = null
-let noteThree = null
-let noteFour = null
-
-let twoByTwoMatches = []
-let threeByThreeMatches
 
 /*********Cached DOM elements**********/
 
 //grabs the instruction dialog box
-const dialog = document.getElementById('instructionBox')
+const instructionDialog = document.getElementById('instructionBox')
 //grabs the instruction button
 const instructionButton = document.querySelector('#instruction')
+//grab the restart dialog box 
+const restartDialog = document.getElementById('youWin')
+//grab the restart button in the restart popup box
+const restartButton = document.getElementById('restartButton')
 //grab the close button in the instructions popup box
 const closeInstructionButton = document.getElementById('continueButton')
 //grabs the check box
@@ -49,33 +50,20 @@ const allTheButtons = document.querySelectorAll('.difficulty')
 const twoByTwoGrid = document.querySelector('.twoByTwo')
 //grabs the 3x3 grid section
 const threeByThreeGrid = document.querySelector('.threeByThree')
+//grabs the 4x4 grid section
+const fourByFourGrid = document.querySelector('.fourByFour')
+//grabs the 5x5 grid section
+const fiveByFiveGrid = document.querySelector('.fiveByFive')
 //grabs each object in the section
-const myGridObjects = document.querySelectorAll('.eachObject')
+const twoByTwoObjects = document.querySelectorAll('game-object-2by2')
+//grabs the start button
+const startButton = document.querySelector('#start')
+//grabs the timer 
+const timer = document.getElementById('timer')
+
+
 
 /**********Functions**********/
-
-//Function to grab a random index from the Notes array and create a new index with the randomly generated number
-//2x2
-function randomNotesArrayTwoByTwo(length = 2) {
-    return Array.from(Array(length), () => Math.floor(Math.random() * allTheNotes.length));
-
-}
-
-//3x3
-function randomNotesArrayThreeByThree(length = 4) {
-    return Array.from(Array(length), () => Math.floor(Math.random() * allTheNotes.length))
-}
-
-
-//function to change object color and play sound
-function changeColor() {
-    //to change the objects color
-    this.classList.toggle('change');
-}
-
-function playIdx() {
-    
-}
 
 //function for buttons to toggle visibility
 function amIHidden() {
@@ -84,32 +72,36 @@ function amIHidden() {
     } else if (this.id === "easyDifficulty"){
         threeByThreeGrid.classList.toggle('iAmHiddenNow')
     } else if (this.id === "mediumDifficulty") {
-        console.log('4')
+        fourByFourGrid.classList.toggle('iAmHiddenNow')
     } else if (this.id === "hardDifficulty") {
-        console.log('5')
+        fiveByFiveGrid.classList.toggle('iAmHiddenNow')
     } 
     return
 }
 
-//function to shuffle array 
-function shuffleArray () {
-    for (let i = allTheNotes.length - 1; i > 0; i--) {
-        let j = Math.floor(Math.random() * (i+1));
-        [allTheNotes[i], allTheNotes[j]] = [allTheNotes[j], allTheNotes[i]]
-    }
+//function for buttons to toggle collor when selected
+function toggleColor() {
+    if (this.id === "practiceDifficulty") {
+        this.classList.toggle('borderColor')
+    } else if (this.id === "easyDifficulty"){
+        this.classList.toggle('borderColor')
+    } else if (this.id === "mediumDifficulty") {
+        this.classList.toggle('borderColor')
+    } else if (this.id === "hardDifficulty") {
+        this.classList.toggle('borderColor')
+    } 
     return
 }
 
-
 //function for instruction dialog box w/ instruction button
 function toggleInstructions() {
-    dialog.showModal();
+    instructionDialog.showModal();
 }
 
 //function to close the instructions. Function only runs of checkbox in dialog is selected 
 function closeInstructions() {
     if(checkBox.checked === true) {
-        dialog.close();
+        instructionDialog.close();
     } else {
         return
     }
@@ -117,30 +109,85 @@ function closeInstructions() {
 
 
 
+function playGame() {
+
+    let timeLeft = 15
+    let timerId = setInterval(countdown, 1000)
+
+    function countdown() {
+        if (timeLeft == -1) {
+            clearTimeout(timerId);
+            console.log('You lose')
+        } else {
+            timer.innerHTML = `Time Remaining: ${timeLeft}`;
+            timeLeft--;
+        }
+    }
+
+    //shuffle notes in the two by two grid
+    let shuffleNotesTwoByTwo = twoByTwoNotes.sort(() => (Math.random() > .5) ? 2 : -1);
+    for ( let object = 0; object < twoByTwoNotes.length; object++) {
+        let musicNote = document.createElement('div');
+        musicNote.className = 'game-object-2by2';
+        let musicNoteSrc = shuffleNotesTwoByTwo[object]
+        if ([object] < 4) { 
+            twoByTwoGrid.appendChild(musicNote);
+            musicNote.addEventListener('click', function() {
+                musicNoteSrc.play()
+                this.classList.add('change')
+                    if (userSelectionOne === null) {
+                        userSelectionOne = twoByTwoNotes[object].src
+                        userSelectedObjectOne = this
+                    } else if (userSelectionTwo === null) {
+                        userSelectionTwo = twoByTwoNotes[object].src
+                        userSelectedObjectTwo = this
+                         if (userSelectionOne === userSelectionTwo) {
+                            userSelectedObjectOne.classList.add('vanish');
+                            userSelectedObjectTwo.classList.add('vanish');
+                            userSelectedObjectOne.classList.add('win')
+                            userSelectedObjectTwo.classList.add('win')
+                            userSelectionOne = null
+                            userSelectionTwo = null
+
+                            if(document.querySelectorAll('.win').length === twoByTwoNotes.length) {
+                                restartDialog.showModal()
+                                clearTimeout(timerId)
+                                restartButton.addEventListener('click', function()  {
+                                    restartDialog.close();
+                                    location.reload();
+                                })
+                            }   
+
+                        } else if (userSelectionOne !== userSelectionTwo) {
+                            userSelectedObjectOne.classList.remove('change')
+                            userSelectedObjectTwo.classList.remove('change')
+                            userSelectionOne = null
+                            userSelectionTwo = null 
+
+                        }
+                    }
+            })
+        }
+    }
+}
+
+
 /**********Event Listeners**********/
 
 //forEach loop to iterate through the buttons and add an event listener and a function to each.
 allTheButtons.forEach(button => button.addEventListener('click', amIHidden))
 allTheButtons.forEach(button => button.addEventListener('touch', amIHidden))
-allTheButtons.forEach(button => button.addEventListener('click', shuffleArray))
-allTheButtons.forEach(button => button.addEventListener('touch', shuffleArray))
-//loops through all the objects and for each objects adds event listeners
-myGridObjects.forEach(gridObject => gridObject.addEventListener('click', changeColor))
-myGridObjects.forEach(gridObject => gridObject.addEventListener('touch', changeColor))
+allTheButtons.forEach(button => button.addEventListener('click', toggleColor))
+allTheButtons.forEach(button => button.addEventListener('touch', toggleColor))
 //adds an event listener to the instructions button 
 instructionButton.addEventListener('click', toggleInstructions)
 instructionButton.addEventListener('touch', toggleInstructions)
 //adds an event listener to the close button 
 closeInstructionButton.addEventListener('click', closeInstructions)
 closeInstructionButton.addEventListener('touch', closeInstructions)
+//add an event listener to the start button
+startButton.addEventListener('click', playGame)
+startButton.addEventListener('touch', playGame)
 
-//attempt to iterate through the array and each object and assign a sound to each object
-
-function whichNote() {
-    randomNote = (allTheNotes[Math.floor(Math.random() * allTheNotes.length)])
-    noteIdx = Number(randomNote)
-    console.log(randomNote)
-    console.log(noteIdx)
-}
 
 
