@@ -65,14 +65,60 @@ ul {
     border-radius: 12px;
 }
 
-#instructionBox {
+#instructionBoxOne {
     width: 300px;
     border: solid 7.5px #846267;
     background-color: #E0C1B3;
     border-radius: 25px;
 }
 
-#continueButton{
+#instructionBoxTwo {
+    width: 300px;
+    border: solid 7.5px #846267;
+    background-color: #E0C1B3;
+    border-radius: 25px;
+}
+
+#instructionBoxThree {
+    width: 300px;
+    border: solid 7.5px #846267;
+    background-color: #E0C1B3;
+    border-radius: 25px;
+}
+
+#instructionBoxFour {
+    width: 300px;
+    border: solid 7.5px #846267;
+    background-color: #E0C1B3;
+    border-radius: 25px;
+}
+
+#continueButtonOne{
+    margin-top: 5px;
+    background-color:#D89A9E;
+    border: solid 5px #846267;
+    padding: 7px;
+    border-radius: 10px;
+}
+
+#continueButtonTwo{
+    margin-top: 5px;
+    background-color:#D89A9E;
+    border: solid 5px #846267;
+    padding: 7px;
+    border-radius: 10px;
+}
+
+#continueButtonThree{
+    margin-top: 5px;
+    background-color:#D89A9E;
+    border: solid 5px #846267;
+    padding: 7px;
+    border-radius: 10px;
+}
+
+#continueButtonFour{
+    margin-top: 5px;
     background-color:#D89A9E;
     border: solid 5px #846267;
     padding: 7px;
@@ -116,6 +162,49 @@ ul {
     display: flex;
     justify-content: space-evenly;
 }
+
+#difficultyButtonsImg {
+    height:auto;
+    max-width: 100%;
+}
+
+#difficultyButtonsWithObjectImg {
+    height:auto;
+    max-width: 100%;
+}
+
+#boardWithMissingObjectImg {
+    height:auto;
+    max-width: 45%;
+    position: relative;
+}
+
+#emptyBoardImg {
+    height:auto;
+    max-width: 45%;
+    position: relative;
+}
+
+#youWinImg {
+    height:auto;
+    max-width: 100%;
+    position: relative;
+}
+
+#timerImg {
+    height:auto;
+    max-width: 100%;
+    position: relative;
+}
+
+#youLoseImg {
+    height:auto;
+    max-width: 100%;
+    position: relative;
+}
+
+
+
 .twoByTwo {
     width: 200px;
     height: 200px;

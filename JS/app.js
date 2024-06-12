@@ -28,8 +28,14 @@ let userSelectionTwo = null
 
 /*********Cached DOM elements**********/
 
-//grabs the instruction dialog box
-const instructionDialog = document.getElementById('instructionBox')
+//grabs the instruction dialog box one
+const instructionDialogOne = document.getElementById('instructionBoxOne')
+//grabs the instruction dialog box two
+const instructionDialogTwo = document.getElementById('instructionBoxTwo')
+//grabs the instruction dialog box three
+const instructionDialogThree = document.getElementById('instructionBoxThree')
+//grabs the instruction dialog box three
+const instructionDialogFour = document.getElementById('instructionBoxFour')
 //grabs the instruction button
 const instructionButton = document.querySelector('#instruction')
 //grab the win dialog box 
@@ -38,8 +44,14 @@ const winDialog = document.getElementById('youWin')
 const winButton = document.getElementById('winButton')
 //grab the restart button
 const restartButton = document.getElementById('restartButton')
-//grab the close button in the instructions popup box
-const closeInstructionButton = document.getElementById('continueButton')
+//grab the close button in the 1st instructions popup box
+const closeInstructionButtonOne = document.getElementById('continueButtonOne')
+//grab the close button in the 2nd instructions popup box
+const closeInstructionButtonTwo = document.getElementById('continueButtonTwo')
+//grab the close button in the 3rd instructions popup box
+const closeInstructionButtonThree = document.getElementById('continueButtonThree')
+//grab the close button in the 4th instructions popup box
+const closeInstructionButtonFour = document.getElementById('continueButtonFour')
 //grabs the youLose dialog box
 const youLoseBox = document.getElementById('youLose')
 //grabs the button in the youLose dialog box
@@ -106,12 +118,23 @@ function toggleColor() {
 
 //function for instruction dialog box w/ instruction button
 function toggleInstructions() {
-    instructionDialog.showModal();
+    instructionDialogOne.showModal();
 }
 
 //function to close the instructions. Function only runs of checkbox in dialog is selected 
 function closeInstructions() {
-        instructionDialog.close();
+    if (this.id === "continueButtonOne") {
+        instructionDialogTwo.showModal();
+        instructionDialogOne.close();
+    } else if (this.id === "continueButtonTwo") {
+            instructionDialogThree.showModal();
+            instructionDialogTwo.close();      
+    } else if (this.id === "continueButtonThree") {
+            instructionDialogThree.close();
+            instructionDialogFour.showModal();
+    } else {
+        instructionDialogFour.close();
+    }
 }
 
 
@@ -132,7 +155,7 @@ function playGame() {
                     location.reload();
                 }) 
             } else {
-                timer.innerHTML = `Time Remaining: ${timeLeft}`;
+                timer.innerHTML = `Time Remaining: ${timeLeft} seconds`;
                 timeLeft--;
             }
         }
@@ -194,7 +217,7 @@ function playGame() {
                     location.reload();
                 }) 
             } else {
-                timer.innerHTML = `Time Remaining: ${timeLeft}`;
+                timer.innerHTML = `Time Remaining: ${timeLeft} seconds`;
                 timeLeft--;
             }
         }
@@ -255,7 +278,7 @@ function playGame() {
                     location.reload();
                 }) 
             } else {
-                timer.innerHTML = `Time Remaining: ${timeLeft}`;
+                timer.innerHTML = `Time Remaining: ${timeLeft} seconds`;
                 timeLeft--;
             }
         }
@@ -315,7 +338,7 @@ function playGame() {
                     location.reload();
                 }) 
             } else {
-                timer.innerHTML = `Time Remaining: ${timeLeft}`;
+                timer.innerHTML = `Time Remaining: ${timeLeft} seconds`;
                 timeLeft--;
             }
         }
@@ -378,9 +401,18 @@ allTheButtons.forEach(button => button.addEventListener('touch', toggleColor))
 //adds an event listener to the instructions button 
 instructionButton.addEventListener('click', toggleInstructions)
 instructionButton.addEventListener('touch', toggleInstructions)
-//adds an event listener to the close button 
-closeInstructionButton.addEventListener('click', closeInstructions)
-closeInstructionButton.addEventListener('touch', closeInstructions)
+//adds an event listener to the close button One
+closeInstructionButtonOne.addEventListener('click', closeInstructions)
+closeInstructionButtonOne.addEventListener('touch', closeInstructions)
+//adds an event listener to the close button two
+closeInstructionButtonTwo.addEventListener('click', closeInstructions)
+closeInstructionButtonTwo.addEventListener('touch', closeInstructions)
+//adds an event listener to the close button three
+closeInstructionButtonThree.addEventListener('click', closeInstructions)
+closeInstructionButtonThree.addEventListener('touch', closeInstructions)
+//adds an event listener to the close button four
+closeInstructionButtonFour.addEventListener('click', closeInstructions)
+closeInstructionButtonFour.addEventListener('touch', closeInstructions)
 //add an event listener to the start button
 startButton.addEventListener('click', playGame)
 startButton.addEventListener('touch', playGame)

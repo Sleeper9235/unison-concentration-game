@@ -27,28 +27,58 @@
                 <div class="buttons">
                     <button class="button" id="instruction">Instructions</button>
                 
-                    <dialog id="instructionBox" >
+                    <dialog id="instructionBoxOne" >
                         <h3>Welcome to Unison!</h3>
-                        <p>Where the name of the game is finding which 2 boxes produce the same sound, or the unison tone.
-                            <br />
-                            <br />
-                        You'll start by selecting a difficulty (you'll see your selection by the border changing to a new color). Once selected, simply press start! (Simple enough, right?) 
-                            <br />
-                            <br />
-                        Once "start" has been selected, a grid will appear based on the difficulty selected previously (see Difficulties! section below). The grid of choice will also contain boxes and these boxes contain randomly generated notes. And it so happens that 2 of the boxes contain the same note. Find the 2 boxes that contain the same note and they will disappear make the entire grid disappear and you win! But, be careful! There is a timer. The grid must be solved before the timer runs out or you'll lose!
-                            <br />
-                            <br />
-                        But most importantly of all this game enforces tonal regonizition, and it is not always easy! learn and have fun!
-                            <br />
-                        <h4>Difficulties!</h4>
+                        <p>Where the name of the game is finding which 2 boxes produce the same sound, or the unison tone.</p>
+                        <button id="continueButtonOne" autofocus>Continue</button>
+                    </dialog>
+
+                    <dialog id="instructionBoxTwo">
+                        <p>You'll start by selecting a difficulty</p>
+
+                        <img id="difficultyButtonsImg" src="assets/photos/difficulties.png" alt="photo of the difficulty section in the instructions page">
+
                         <ul>
                             <li>Practice: 2 tones / 4 squares</li>
                             <li>Easy: 4 tones / 8 squares</li>
                             <li>Medium: 8 tones / 16 squares</li>
                             <li>Hard: 12 tones / 24 squares</li>
                         </ul>
-                        </p>
-                        <button id="continueButton" autofocus>Continue</button>
+                        
+
+                        <P>You'll see your selection by the border changing to a new color!</P>
+                        <img id="difficultyButtonsWithObjectImg" src="assets/photos/difficltiesWithObjectSelected.png" alt="difficulty section with object selected">
+                        <p>Once you've made your selection, simply press start! (Simple enough, right?)</p>
+                        <img id="startButtonImg" src="assets/photos/startButton.png" alt="Start Button">
+
+                        <button id="continueButtonTwo" autofocus>Continue</button>
+                    </dialog>
+                    
+                    <dialog id="instructionBoxThree">
+                        <p>Once "start" has been selected, a grid will appear based on the difficulty selected. The grid of choice will also contain boxes and these boxes contain randomly generated notes. And it so happens that 2 of the boxes contain the same note. Find the 2 boxes that contain the same note and they will disappear make the entire grid disappear and you win!</p>
+
+                        <img id="boardWithMissingObjectImg" src="assets/photos/boardWithMissingObject.png" alt="board with matched object">
+
+                        <img id="emptyBoardImg" src="assets/photos/emptyBoard.png" alt="empty board">
+
+                        <img id="youWinImg" src="assets/photos/youWon.png" alt="Winning screen">
+
+                        <button id="continueButtonThree" autofocus>Continue</button>
+                    </dialog>
+                    <dialog id="instructionBoxFour">   
+                        <p>But how do we interact with the box you ask? Just click or touch the box and your first selection will change color and make a sound! The second selection will either produce a sound and stay there or produce a sound and dissapear!</p> 
+                        
+                        <p>Be careful! Remeber, there is a timer.<p>
+                        
+                        <img id="timerImg" src="assets/photos/timer.png" alt="Timer with 15 seconds remaining">
+
+                        <p>The grid must be solved before the timer runs out or you'll lose!</p>
+
+                        <img id="youLoseImg" src="assets/photos/youLose.png" alt="Image of the losing screen">
+                
+                        <p>But most importantly of all this game enforces tonal regonizition, and it is not always easy! Learn and have fun!</p>
+
+                        <button id="continueButtonFour" autofocus>Let's Play!</button>
                     </dialog>
                 </div>
         </section>
@@ -84,14 +114,14 @@
         <section id="winOrLose">
             <div>
                 <dialog id="youLose">
-                    <h3>Aww you lost!</h3>
+                    <h3>Aww! You lost!</h3>
                     <p>Press the restart button to select a new difficulty and try again!</p>
                     <button id="loseButton"autofocus>Restart</button>
                 </dialog>
             </div>
             <div>
                 <dialog id="youWin">
-                    <h3>Yeah you won!</h3>
+                    <h3>Yeah! You won!</h3>
                     <p>Press the restart button to select a new difficulty and try again!</p>
                     <button id="winButton" autofocus>Restart</button>
                 </dialog>
