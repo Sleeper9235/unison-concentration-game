@@ -130,7 +130,7 @@ function playGame() {
             }
         }
         let shuffleNotesTwoByTwo = twoByTwoNotes.sort(() => (Math.random() > .5) ? 2 : -1);
-            for ( let object = 0; object < twoByTwoNotes.length; object++) {
+            for (let object = 0; object < twoByTwoNotes.length; object++) {
                 let musicNote = document.createElement('div');
                 musicNote.className = 'game-object-2by2';
                 let musicNoteSrc = shuffleNotesTwoByTwo[object]
@@ -139,10 +139,10 @@ function playGame() {
                     musicNote.addEventListener('click', function() {
                         musicNoteSrc.play()
                         this.classList.add('change')
-                            if (userSelectionOne === null) {
+                            if (userSelectionOne === null && userSelectionTwo === null) {
                                 userSelectionOne = twoByTwoNotes[object].src
                                 userSelectedObjectOne = this
-                            } else if (userSelectionTwo === null) {
+                            } else if (userSelectionTwo === null  && this !== userSelectedObjectOne) {
                                 userSelectionTwo = twoByTwoNotes[object].src
                                 userSelectedObjectTwo = this
                                 if (userSelectionOne === userSelectionTwo) {
@@ -191,11 +191,11 @@ function playGame() {
                 timeLeft--;
             }
         }
-        let shuffleNotesTwoByTwo = threeByThreeNotes.sort(() => (Math.random() > .5) ? 2 : -1);
+        let shuffleNotesThreeByThree = threeByThreeNotes.sort(() => (Math.random() > .5) ? 2 : -1);
         for ( let object = 0; object < threeByThreeNotes.length; object++) {
             let musicNote = document.createElement('div');
             musicNote.className = 'game-object-3by3';
-            let musicNoteSrc = shuffleNotesTwoByTwo[object]
+            let musicNoteSrc = shuffleNotesThreeByThree[object]
             if ([object] < 8) { 
                 threeByThreeGrid.appendChild(musicNote);
                 musicNote.addEventListener('click', function() {
@@ -204,7 +204,7 @@ function playGame() {
                         if (userSelectionOne === null) {
                             userSelectionOne = threeByThreeNotes[object].src
                             userSelectedObjectOne = this
-                        } else if (userSelectionTwo === null) {
+                        } else if (userSelectionTwo === null  && this !== userSelectedObjectOne) {
                             userSelectionTwo = threeByThreeNotes[object].src
                             userSelectedObjectTwo = this
                             if (userSelectionOne === userSelectionTwo) {
@@ -214,7 +214,6 @@ function playGame() {
                                 userSelectedObjectTwo.classList.add('win')
                                 userSelectionOne = null
                                 userSelectionTwo = null
-
                                 if(document.querySelectorAll('.win').length === threeByThreeNotes.length) {
                                     restartDialog.showModal()
                                     clearTimeout(timerId)
@@ -253,11 +252,11 @@ function playGame() {
                 timeLeft--;
             }
         }
-        let shuffleNotesTwoByTwo = fourByFourNotes.sort(() => (Math.random() > .5) ? 2 : -1);
+        let shuffleNotesFourByFour = fourByFourNotes.sort(() => (Math.random() > .5) ? 2 : -1);
         for ( let object = 0; object < fourByFourNotes.length; object++) {
             let musicNote = document.createElement('div');
             musicNote.className = 'game-object-4by4';
-            let musicNoteSrc = shuffleNotesTwoByTwo[object]
+            let musicNoteSrc = shuffleNotesFourByFour[object]
             if ([object] < 16) { 
                 fourByFourGrid.appendChild(musicNote);
             }musicNote.addEventListener('click', function() {
@@ -266,7 +265,7 @@ function playGame() {
                     if (userSelectionOne === null) {
                         userSelectionOne = fourByFourNotes[object].src
                         userSelectedObjectOne = this
-                    } else if (userSelectionTwo === null) {
+                    } else if (userSelectionTwo === null  && this !== userSelectedObjectOne) {
                         userSelectionTwo = fourByFourNotes[object].src
                         userSelectedObjectTwo = this
                         if (userSelectionOne === userSelectionTwo) {
@@ -291,11 +290,10 @@ function playGame() {
                             userSelectedObjectTwo.classList.remove('change')
                             userSelectionOne = null
                             userSelectionTwo = null 
-
-                        }
-                    }
-            })
-        }
+                        } 
+                     }
+                })
+            }
     } else if (fiveByFiveButton.id === 'hardDifficulty' && fiveByFiveButton.classList.contains('borderColor')) {
         let timeLeft = 60
         let timerId = setInterval(countdown, 1000)
@@ -314,11 +312,11 @@ function playGame() {
                 timeLeft--;
             }
         }
-        let shuffleNotesTwoByTwo = fiveByFiveNotes.sort(() => (Math.random() > .5) ? 2 : -1);
+        let shuffleNotesFiveByFive = fiveByFiveNotes.sort(() => (Math.random() > .5) ? 2 : -1);
         for ( let object = 0; object < fiveByFiveNotes.length; object++) {
             let musicNote = document.createElement('div');
             musicNote.className = 'game-object-5by5';
-            let musicNoteSrc = shuffleNotesTwoByTwo[object]
+            let musicNoteSrc = shuffleNotesFiveByFive[object]
             if ([object] < 24) { 
                 fiveByFiveGrid.appendChild(musicNote);
                 musicNote.addEventListener('click', function() {
@@ -327,7 +325,7 @@ function playGame() {
                         if (userSelectionOne === null) {
                             userSelectionOne = fiveByFiveNotes[object].src
                             userSelectedObjectOne = this
-                        } else if (userSelectionTwo === null) {
+                        } else if (userSelectionTwo === null  && this !== userSelectedObjectOne) {
                             userSelectionTwo = fiveByFiveNotes[object].src
                             userSelectedObjectTwo = this
                             if (userSelectionOne === userSelectionTwo) {
