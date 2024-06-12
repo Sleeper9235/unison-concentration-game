@@ -6,72 +6,100 @@
     <title>Unison</title>
     <script defer src="JS/app.js"></script>
     <link rel="stylesheet" href="CSS/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <hr class="vline" />
+    <!-- <hr class="vline" /> -->
+<nav>
 
-    <section id="landing" >
-        <div id="titleSection">
-            <h1 id="title" >Unison</h1>
-            <h2 id="subTitle">The tonal matching game</h2>
-        </div>
-    </section>
-    <section id="instructionsSection">
+</nav>
+    <div id = "gameBoard">
+        <section id="name">
+            <div id="titleSection">
+                <h1 id="title" class="bold">Unison</h1>
+                <h2 id="subTitle">The tonal matching game</h2>
+            </div>
+        </section>
+        <section id="instructionsSection">
+                <div class="buttons">
+                    <button class="button" id="instruction">Instructions</button>
+                
+                    <dialog id="instructionBox" >
+                        <h3>Welcome to Unison!</h3>
+                        <p>Where the name of the game is finding which 2 boxes produce the same sound, or the unison tone.
+                            <br />
+                            <br />
+                        You'll start by selecting a difficulty (you'll see your selection by the border changing to a new color). Once selected, simply press start! (Simple enough, right?) 
+                            <br />
+                            <br />
+                        Once "start" has been selected, a grid will appear based on the difficulty selected previously (see Difficulties! section below). The grid of choice will also contain boxes and these boxes contain randomly generated notes. And it so happens that 2 of the boxes contain the same note. Find the 2 boxes that contain the same note and they will disappear make the entire grid disappear and you win! But, be careful! There is a timer. The grid must be solved before the timer runs out or you'll lose!
+                            <br />
+                            <br />
+                        But most importantly of all this game enforces tonal regonizition, and it is not always easy! learn and have fun!
+                            <br />
+                        <h4>Difficulties!</h4>
+                        <ul>
+                            <li>Practice: 2 tones / 4 squares</li>
+                            <li>Easy: 4 tones / 8 squares</li>
+                            <li>Medium: 8 tones / 16 squares</li>
+                            <li>Hard: 12 tones / 24 squares</li>
+                        </ul>
+                        </p>
+                        <button id="continueButton" autofocus>Continue</button>
+                    </dialog>
+                </div>
+        </section>
+        <section id="selectYourDifficulty">
+            <div>
+                <h3 id="message">Select your difficulty!</h3>
+            </div>
+        </section>
+        <section id="difficultyButtons">
+            <div>
+                <button class="difficulty" id="practiceDifficulty">Practice</button>
+                <button class="difficulty" id="easyDifficulty">Easy</button>
+                <button class="difficulty" id="mediumDifficulty">Medium</button>
+                <button class="difficulty" id="hardDifficulty">Hard</button>
+            </div>
+        </section>
+        <section id="startButton">
             <div class="buttons">
-                <button class="button" id="instruction">Instructions</button>
-            
-                <dialog id="instructionBox" >
-                    <h3>Welcome to Unison!</h3>
-                    <p>Game overview and instructions</p>
-                    <button id="continueButton" autofocus>Continue</button>
+                <button class="button" id="start">Start</button>
+            </div>
+        </section>
+        <section>
+                <div>
+                    <h4 id="timer">Time Remaining:</h3>
+                </div>
+        </section>
+        <section id="parentGrid">
+            <div class="twoByTwo iAmHiddenNow"></div>
+            <div class="threeByThree iAmHiddenNow"></div>
+            <div class="fourByFour iAmHiddenNow"></div>
+            <div class="fiveByFive iAmHiddenNow"></div>
+        </section>
+        <section id="winOrLose">
+            <div>
+                <dialog id="youLose">
+                    <h3>Aww you lost!</h3>
+                    <p>Press the restart button to select a new difficulty and try again!</p>
+                    <button id="loseButton"autofocus>Restart</button>
                 </dialog>
             </div>
-    </section>
-    <section id="selectYourDifficulty">
-        <div>
-            <h3 id="message">Select your difficulty!</h3>
-        </div>
-    </section>
-    <section id=""difficultyButtons>
-        <div>
-            <button class="difficulty" id="practiceDifficulty">2X2</button>
-            <button class="difficulty" id="easyDifficulty">3x3</button>
-            <button class="difficulty" id="mediumDifficulty">4x4</button>
-            <button class="difficulty" id="hardDifficulty">5x5</button>
-        </div>
-    </section>
-    <section id="startButton">
-        <div class="buttons">
-            <button class="button" id="start">START</button></a>
-        </div>
-    </section>
-    <section>
             <div>
-                <h4 id="timer">Time Remaining:</h3>
+                <dialog id="youWin">
+                    <h3>Yeah you won!</h3>
+                    <p>Press the restart button to select a new difficulty and try again!</p>
+                    <button id="winButton" autofocus>Restart</button>
+                </dialog>
             </div>
-    </section>
-    <section id="parentGrid">
-        <div class="twoByTwo iAmHiddenNow"></div>
-        <div class="threeByThree iAmHiddenNow"></div>
-        <div class="fourByFour iAmHiddenNow"></div>
-        <div class="fiveByFive iAmHiddenNow"></div>
-    </section>
-    <section id="winOrLose">
-        <div>
-            <dialog id="youLose">
-                <h3>Aww you lost!</h3>
-                <p>Press the restart button to select a new difficulty and try again!</p>
-                <button id="loseButton"autofocus>Restart</button>
-            </dialog>
-        </div>
-        <div>
-            <dialog id="youWin">
-                <h3>Yeah you won!</h3>
-                <p>Press the restart button to select a new difficulty and try again!</p>
-                <button id="restartButton" autofocus>Restart</button>
-            </dialog>
-        </div>
-    </section>
+        </section>
+        <section>
+            <button id="restartButton">Restart</button>
+        </section>
+    </div>
 </body>
 </html>

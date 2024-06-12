@@ -1,5 +1,10 @@
+
+
+
 body {
+    font-family: "Raleway", sans-serif;
     margin: 0;
+    background-color: #846267;
     height: 100vh;
 }
 
@@ -8,15 +13,17 @@ section {
     justify-content: center;
 }
 button {
-    background-color:argb(34, 51, 45);
+    font-family: "Raleway", sans-serif;
+    font-weight: bold;
+    background-color:#D89A9E;
+    border: solid 5px #C37D92;
+    color: black;
     padding: 20px;
     border-radius: 12px;
 }
 
-button#continueButton{
-    background-color:argb(34, 51, 45);
-    padding: 7px;
-    border-radius: 12px;
+h1 {
+    text-align: center;
 }
 h3 {
     margin: 10px;
@@ -24,12 +31,28 @@ h3 {
 div {
     margin: auto;
 }
-#landing {
-    text-align: center;
+p {
+    font-weight: 400;
+}
+
+ul {
+    font-weight: 500;
+}
+
+#gameBoard {
+    display: flex;
+    flex-direction: column;
+    background-color: #E0C1B3;
+    border: solid 20px #C37D92;
+    border-radius: 100px;
 }
 
 #parentGrid {
     display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
 }
 
 #selectYourDifficulty h3{
@@ -42,44 +65,111 @@ div {
     border-radius: 12px;
 }
 
-
-.twoByTwo {
+#instructionBox {
     width: 300px;
-    height: 300px;
-    margin-left: 11px;
+    border: solid 7.5px #846267;
+    background-color: #E0C1B3;
+    border-radius: 25px;
+}
+
+#continueButton{
+    background-color:#D89A9E;
+    border: solid 5px #846267;
+    padding: 7px;
+    border-radius: 10px;
+}
+
+#restartButton {
+    display: flex;
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#youWin {
+    background-color: #E0C1B3;
+    border: solid 10px #C37D92;
+    border-radius: 15px;
+}
+
+#winButton {
+    background-color:#D89A9E;
+    border: solid 5px #C37D92;
+    padding: 7px;
+    border-radius: 12px;
+}
+
+#youLose {
+    background-color: #E0C1B3;
+    border: solid 10px #C37D92;
+    border-radius: 15px;
+}
+
+#loseButton {
+    background-color:#D89A9E;
+    border: solid 5px #C37D92;
+    padding: 7px;
+    border-radius: 12px;
+}
+
+#difficultyButtons {
+    display: flex;
+    justify-content: space-evenly;
+}
+.twoByTwo {
+    width: 200px;
+    height: 200px;
+    margin-left: auto;
     display: flex;
     flex-wrap: wrap;
-    position: absolute;
+    justify-content: center;
+    position: relative;
+    border: solid 10px #C37D92;
+    background-color: #D89A9E;
+    border-radius: 25px;
+
     
 }
 
 .threeByThree {
-    width: 300px;
-    height: 300px;
-    margin-left: 11px;
+    width: 250px;
+    height: 250px;
+    margin-left: auto;
     display: flex;
     flex-wrap: wrap;
-    position: absolute;
+    justify-content: center;
+    position: relative;
+    border: solid 10px #C37D92;
+    background-color: #D89A9E;
+    border-radius: 25px;
 
 }
 
 .fourByFour {
-    width: 400px;
-    height: 400px;
-    margin-left: 5px;
+    width: 300px;
+    height: 300px;
+    margin-left: auto;
     display: flex;
     flex-wrap: wrap;
-    position: absolute;
+    position: relative;
+    justify-content: center;
+    border: solid 10px #C37D92;
+    background-color: #D89A9E;
+    border-radius: 25px;
     
 }
 
 .fiveByFive {
-    width: 400px;
-    height: 400px;
-    margin-left: 20px;
+    width: 350px;
+    height: 350px;
+    margin-left: auto;
     display: flex;
     flex-wrap: wrap;
-    position: absolute;
+    position: relative;
+    justify-content: center;
+    border: solid 10px #C37D92;
+    background-color: #D89A9E;
+    border-radius: 25px;
 
 }
 .iAmHiddenNow {
@@ -89,42 +179,42 @@ div {
 .game-object-2by2 {
     width: calc(50% - 15px);
     height: calc(50% - 15px);
-    margin: 5px;
+    margin: auto;
     position: relative;
     border-radius: 5px;
-    background-color: #36393B;
+    background-color: #C37D92;
 }
 
 .game-object-3by3 {
     width: calc(33.33% - 13.3px);
     height: calc(33.33% - 13.3px);
-    margin: 5px;
+    margin: auto;
     position: relative;
     border-radius: 5px;
-    background-color: #36393B;
+    background-color: #C37D92;
 }
 
 .game-object-4by4 {
     width: calc(25% - 11px);
     height: calc(25% - 11px);
-    margin: 5px;
+    margin: auto;
     position: relative;
     border-radius: 5px;
-    background-color: #36393B;
+    background-color: #C37D92;
 }
 
 .game-object-5by5 {
-    width: calc(18% - 6px);
-    height: calc(18% - 6px);
-    margin: 5px;
+    width: calc(20% - 10px);
+    height: calc(20% - 10px);
+    margin: auto;
     position: relative;
     border-radius: 5px;
-    background-color: #36393B;
+    background-color: #C37D92;
 }
 
 
 .game-object-2by2.change{
-    background-color: #BFB6BB;
+    background-color: #846267;
 }
 
 .game-object-2by2.change.vanish{
@@ -133,7 +223,7 @@ div {
 }
 
 .game-object-3by3.change{
-    background-color: #BFB6BB;
+    background-color: #846267;
     
 }
 
@@ -142,7 +232,7 @@ div {
 }
 
 .game-object-4by4.change{
-    background-color: #BFB6BB;
+    background-color: #846267;
 }
 
 .game-object-4by4.change.vanish{
@@ -150,25 +240,19 @@ div {
 }
 
 .game-object-5by5.change{
-    background-color: #BFB6BB;
+    background-color: #846267;
 }
 
 .game-object-5by5.change.vanish{
     visibility: hidden;
 }
 
-
-.vline
-{
-    position:fixed;
-    top:0;
-    left:50%;
-    bottom:0; margin:0;
-    border:none;
-    border-right:solid 1px black;
-    z-index:10;
-}
-
 .difficulty.borderColor{
-    border-color: aqua;
+    border-color: #846267;
 }
+
+.bold {
+    font-family: "Raleway", sans-serif;
+    font-weight: 800;
+}
+

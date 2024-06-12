@@ -32,9 +32,11 @@ let userSelectionTwo = null
 const instructionDialog = document.getElementById('instructionBox')
 //grabs the instruction button
 const instructionButton = document.querySelector('#instruction')
-//grab the restart dialog box 
-const restartDialog = document.getElementById('youWin')
-//grab the restart button in the restart popup box
+//grab the win dialog box 
+const winDialog = document.getElementById('youWin')
+//grab the continue button in the win popup box
+const winButton = document.getElementById('winButton')
+//grab the restart button
 const restartButton = document.getElementById('restartButton')
 //grab the close button in the instructions popup box
 const closeInstructionButton = document.getElementById('continueButton')
@@ -68,6 +70,11 @@ const timer = document.getElementById('timer')
 
 
 /**********Functions**********/
+
+//function restart button 
+function restart() {
+    location.reload();
+}
 
 //function for buttons to toggle visibility
 function amIHidden() {
@@ -154,10 +161,10 @@ function playGame() {
                                     userSelectionTwo = null
 
                                     if(document.querySelectorAll('.win').length === twoByTwoNotes.length) {
-                                        restartDialog.showModal()
+                                        winDialog.showModal()
                                         clearTimeout(timerId)
-                                        restartButton.addEventListener('click', function()  {
-                                            restartDialog.close();
+                                        winButton.addEventListener('click', function()  {
+                                            winDialog.close();
                                             location.reload();
                                         })
                                     }   
@@ -215,10 +222,10 @@ function playGame() {
                                 userSelectionOne = null
                                 userSelectionTwo = null
                                 if(document.querySelectorAll('.win').length === threeByThreeNotes.length) {
-                                    restartDialog.showModal()
+                                    winDialog.showModal()
                                     clearTimeout(timerId)
-                                    restartButton.addEventListener('click', function()  {
-                                        restartDialog.close();
+                                    winButton.addEventListener('click', function()  {
+                                        winDialog.close();
                                         location.reload();
                                     })
                                 }   
@@ -277,10 +284,10 @@ function playGame() {
                             userSelectionTwo = null
 
                             if(document.querySelectorAll('.win').length === fourByFourNotes.length) {
-                                restartDialog.showModal()
+                                winDialog.showModal()
                                 clearTimeout(timerId)
-                                restartButton.addEventListener('click', function()  {
-                                    restartDialog.close();
+                                winButton.addEventListener('click', function()  {
+                                    winDialog.close();
                                     location.reload();
                                 })
                             }   
@@ -337,10 +344,10 @@ function playGame() {
                                 userSelectionTwo = null
 
                                 if(document.querySelectorAll('.win').length === fiveByFiveNotes.length) {
-                                    restartDialog.showModal()
+                                    winDialog.showModal()
                                     clearTimeout(timerId)
-                                    restartButton.addEventListener('click', function()  {
-                                        restartDialog.close();
+                                    winButton.addEventListener('click', function()  {
+                                        winDialog.close();
                                         location.reload();
                                     })
                                 }   
@@ -377,6 +384,10 @@ closeInstructionButton.addEventListener('touch', closeInstructions)
 //add an event listener to the start button
 startButton.addEventListener('click', playGame)
 startButton.addEventListener('touch', playGame)
+//add an event listener to the restart button 
+restartButton.addEventListener('click', restart)
+restartButton.addEventListener('touch', restart)
+
 
 
 
