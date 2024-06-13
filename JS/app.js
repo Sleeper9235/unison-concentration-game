@@ -140,11 +140,9 @@ function closeInstructions() {
 
 
 function playGame() {
-
+let timeLeft = 15
+let timerId = setInterval(countdown, 1000)
     if (twoByTwoButton.id === 'practiceDifficulty' && twoByTwoButton.classList.contains('borderColor')) {
-        let timeLeft = 15
-        let timerId = setInterval(countdown, 1000)
-    
         function countdown() {
             if (timeLeft == -1) {
                 clearTimeout(timerId);
@@ -158,51 +156,50 @@ function playGame() {
                 timer.innerHTML = `Time Remaining: ${timeLeft} seconds`;
                 timeLeft--;
             }
-        }
-        let shuffleNotesTwoByTwo = twoByTwoNotes.sort(() => (Math.random() > .5) ? 2 : -1);
-            for (let object = 0; object < twoByTwoNotes.length; object++) {
-                let musicNote = document.createElement('div');
-                musicNote.className = 'game-object-2by2';
-                let musicNoteSrc = shuffleNotesTwoByTwo[object]
-                if ([object] < 4) { 
-                    twoByTwoGrid.appendChild(musicNote);
-                    musicNote.addEventListener('click', function() {
-                        musicNoteSrc.play()
-                        this.classList.add('change')
-                            if (userSelectionOne === null && userSelectionTwo === null) {
-                                userSelectionOne = twoByTwoNotes[object].src
-                                userSelectedObjectOne = this
-                            } else if (userSelectionTwo === null  && this !== userSelectedObjectOne) {
-                                userSelectionTwo = twoByTwoNotes[object].src
-                                userSelectedObjectTwo = this
-                                if (userSelectionOne === userSelectionTwo) {
-                                    userSelectedObjectOne.classList.add('vanish');
-                                    userSelectedObjectTwo.classList.add('vanish');
-                                    userSelectedObjectOne.classList.add('win')
-                                    userSelectedObjectTwo.classList.add('win')
-                                    userSelectionOne = null
-                                    userSelectionTwo = null
+        } 
+                let shuffleNotesTwoByTwo = twoByTwoNotes.sort(() => (Math.random() > .5) ? 2 : -1);
+                    for (let object = 0; object < twoByTwoNotes.length; object++) {
+                        let musicNote = document.createElement('div');
+                        musicNote.className = 'game-object-2by2';
+                        let musicNoteSrc = shuffleNotesTwoByTwo[object]
+                        if ([object] < 4) { 
+                            twoByTwoGrid.appendChild(musicNote);
+                            musicNote.addEventListener('click', function() {
+                                musicNoteSrc.play()
+                                this.classList.add('change')
+                                    if (userSelectionOne === null && userSelectionTwo === null) {
+                                        userSelectionOne = twoByTwoNotes[object].src
+                                        userSelectedObjectOne = this
+                                    } else if (userSelectionTwo === null  && this !== userSelectedObjectOne) {
+                                        userSelectionTwo = twoByTwoNotes[object].src
+                                        userSelectedObjectTwo = this
+                                        if (userSelectionOne === userSelectionTwo) {
+                                            userSelectedObjectOne.classList.add('vanish');
+                                            userSelectedObjectTwo.classList.add('vanish');
+                                            userSelectedObjectOne.classList.add('win')
+                                            userSelectedObjectTwo.classList.add('win')
+                                            userSelectionOne = null
+                                            userSelectionTwo = null
 
-                                    if(document.querySelectorAll('.win').length === twoByTwoNotes.length) {
-                                        winDialog.showModal()
-                                        clearTimeout(timerId)
-                                        winButton.addEventListener('click', function()  {
-                                            winDialog.close();
-                                            location.reload();
-                                        })
-                                    }   
+                                            if(document.querySelectorAll('.win').length === twoByTwoNotes.length) {
+                                                winDialog.showModal()
+                                                clearTimeout(timerId)
+                                                winButton.addEventListener('click', function()  {
+                                                    winDialog.close();
+                                                    location.reload();
+                                                })
+                                            }   
 
-                                } else if (userSelectionOne !== userSelectionTwo) {
-                                    userSelectedObjectOne.classList.remove('change')
-                                    userSelectedObjectTwo.classList.remove('change')
-                                    userSelectionOne = null
-                                    userSelectionTwo = null 
-
-                                }
-                            }
-                    })
-                }
-        }
+                                        } else if (userSelectionOne !== userSelectionTwo) {
+                                            userSelectedObjectOne.classList.remove('change')
+                                            userSelectedObjectTwo.classList.remove('change')
+                                            userSelectionOne = null
+                                            userSelectionTwo = null 
+                                        }
+                                    }
+                            })
+                        }
+                    }
     } else if (threeByThreeButton.id === 'easyDifficulty' && threeByThreeButton.classList.contains('borderColor')) {
         let timeLeft = 15
         let timerId = setInterval(countdown, 1000)
@@ -386,10 +383,11 @@ function playGame() {
                 })
             }
         }
-    } else {
-        return
-    }
-}
+    } 
+} 
+
+
+
 
 /**********Event Listeners**********/
 
