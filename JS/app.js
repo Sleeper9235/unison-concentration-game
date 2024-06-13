@@ -173,9 +173,18 @@ function playGame() {
 
     startButton.classList.add('prevent');
 
-    if (twoByTwoButton.id === 'practiceDifficulty' && twoByTwoButton.classList.contains('borderColor')) {
-        let timeLeft = 15
+        let timeLeft = 0
+
+        if (twoByTwoButton.classList.contains('borderColor') || threeByThreeButton.classList.contains('borderColor')) {
+            timeLeft = 15
+        } else if (fourByFourButton.classList.contains('borderColor')) {
+            timeLeft = 20
+        } else {
+            timeLeft = 30
+        }
+        
         let timerId = setInterval(countdown, 1000)
+
         function countdown() {
             if (timeLeft == -1) {
                 clearTimeout(timerId);
@@ -189,7 +198,21 @@ function playGame() {
                 timer.innerHTML = `Time Remaining: ${timeLeft} seconds`;
                 timeLeft--;
             }
-        } let shuffleNotesTwoByTwo = twoByTwoNotes.sort(() => (Math.random() > .5) ? 2 : -1);
+        } 
+        
+        function increaseTimer() {
+            if (twoByTwoButton.classList.contains('borderColor') || threeByThreeButton.classList.contains('borderColor')) {
+                timeLeft += 2
+            } else if (fourByFourButton.classList.contains('borderColor')) {
+                timeLeft += 4
+            } else {
+                timeLeft += 6
+            }
+        }
+
+        
+     if (twoByTwoButton.id === 'practiceDifficulty' && twoByTwoButton.classList.contains('borderColor')) {
+        let shuffleNotesTwoByTwo = twoByTwoNotes.sort(() => (Math.random() > .5) ? 2 : -1);
             for (let object = 0; object < twoByTwoNotes.length; object++) {
                 let musicNote = document.createElement('div');
                 musicNote.className = 'game-object-2by2';
@@ -210,6 +233,7 @@ function playGame() {
                                     userSelectedObjectTwo.classList.add('vanish');
                                     userSelectedObjectOne.classList.add('win')
                                     userSelectedObjectTwo.classList.add('win')
+                                    increaseTimer();
                                     userSelectionOne = null
                                     userSelectionTwo = null
 
@@ -233,23 +257,6 @@ function playGame() {
                 }
             }
     } else if (threeByThreeButton.id === 'easyDifficulty' && threeByThreeButton.classList.contains('borderColor')) {
-        let timeLeft = 15
-        let timerId = setInterval(countdown, 1000)
-    
-        function countdown() {
-            if (timeLeft == -1) {
-                clearTimeout(timerId);
-                youLoseBox.showModal()
-                clearTimeout(timerId)
-                loseButton.addEventListener('click', function()  {
-                    youLoseBox.close();
-                    location.reload();
-                }) 
-            } else {
-                timer.innerHTML = `Time Remaining: ${timeLeft} seconds`;
-                timeLeft--;
-            }
-        }
         let shuffleNotesThreeByThree = threeByThreeNotes.sort(() => (Math.random() > .5) ? 2 : -1);
         for ( let object = 0; object < threeByThreeNotes.length; object++) {
             let musicNote = document.createElement('div');
@@ -273,6 +280,7 @@ function playGame() {
                                 userSelectedObjectTwo.classList.add('win')
                                 userSelectionOne = null
                                 userSelectionTwo = null
+                                increaseTimer();
                                 if(document.querySelectorAll('.win').length === threeByThreeNotes.length) {
                                     winDialog.showModal()
                                     clearTimeout(timerId)
@@ -294,23 +302,6 @@ function playGame() {
             }
         }
     } else if (fourByFourButton.id === 'mediumDifficulty' && fourByFourButton.classList.contains('borderColor')) {
-        let timeLeft = 45
-        let timerId = setInterval(countdown, 1000)
-    
-        function countdown() {
-            if (timeLeft == -1) {
-                clearTimeout(timerId);
-                youLoseBox.showModal()
-                clearTimeout(timerId)
-                loseButton.addEventListener('click', function()  {
-                    youLoseBox.close();
-                    location.reload();
-                }) 
-            } else {
-                timer.innerHTML = `Time Remaining: ${timeLeft} seconds`;
-                timeLeft--;
-            }
-        }
         let shuffleNotesFourByFour = fourByFourNotes.sort(() => (Math.random() > .5) ? 2 : -1);
         for ( let object = 0; object < fourByFourNotes.length; object++) {
             let musicNote = document.createElement('div');
@@ -332,6 +323,7 @@ function playGame() {
                             userSelectedObjectTwo.classList.add('vanish');
                             userSelectedObjectOne.classList.add('win')
                             userSelectedObjectTwo.classList.add('win')
+                            increaseTimer();
                             userSelectionOne = null
                             userSelectionTwo = null
 
@@ -354,23 +346,6 @@ function playGame() {
                 })
             }
     } else if (fiveByFiveButton.id === 'hardDifficulty' && fiveByFiveButton.classList.contains('borderColor')) {
-        let timeLeft = 60
-        let timerId = setInterval(countdown, 1000)
-    
-        function countdown() {
-            if (timeLeft == -1) {
-                clearTimeout(timerId);
-                youLoseBox.showModal()
-                clearTimeout(timerId)
-                loseButton.addEventListener('click', function()  {
-                    youLoseBox.close();
-                    location.reload();
-                }) 
-            } else {
-                timer.innerHTML = `Time Remaining: ${timeLeft} seconds`;
-                timeLeft--;
-            }
-        }
         let shuffleNotesFiveByFive = fiveByFiveNotes.sort(() => (Math.random() > .5) ? 2 : -1);
         for ( let object = 0; object < fiveByFiveNotes.length; object++) {
             let musicNote = document.createElement('div');
@@ -392,6 +367,7 @@ function playGame() {
                                 userSelectedObjectTwo.classList.add('vanish');
                                 userSelectedObjectOne.classList.add('win')
                                 userSelectedObjectTwo.classList.add('win')
+                                increaseTimer();
                                 userSelectionOne = null
                                 userSelectionTwo = null
 

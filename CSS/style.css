@@ -249,8 +249,8 @@ ul {
 }
 
 .fiveByFive {
-    width: 350px;
-    height: 350px;
+    width: 325px;
+    height: 325px;
     margin-left: auto;
     display: flex;
     flex-wrap: wrap;
