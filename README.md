@@ -60,3 +60,4 @@ links to draft materials:
 
 4. I would like to make a "high score" board, that solely keeps track of the attempts made on the current interation of the game. (resets on refresh)
 
+5. address any gramatical errors
