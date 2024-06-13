@@ -88,32 +88,62 @@ function restart() {
     location.reload();
 }
 
-//function for buttons to toggle visibility
-function amIHidden() {
-    if (this.id === "practiceDifficulty") {
-        twoByTwoGrid.classList.toggle('iAmHiddenNow')
-    } else if (this.id === "easyDifficulty"){
-        threeByThreeGrid.classList.toggle('iAmHiddenNow')
-    } else if (this.id === "mediumDifficulty") {
-        fourByFourGrid.classList.toggle('iAmHiddenNow')
-    } else if (this.id === "hardDifficulty") {
-        fiveByFiveGrid.classList.toggle('iAmHiddenNow')
-    } 
-    return
-}
+// simplified toggleColor and amIHidden to the difficultyButtons function. Also prevents overlapping of pressed buttons
+function difficultyButtons() {
+    let pressedButton = this.id
+        console.log(pressedButton)
+        if (pressedButton === "practiceDifficulty") {
+            twoByTwoButton.classList.toggle('borderColor')
+            twoByTwoGrid.classList.toggle('iAmHiddenNow')
 
-//function for buttons to toggle collor when selected
-function toggleColor() {
-    if (this.id === "practiceDifficulty") {
-        this.classList.toggle('borderColor')
-    } else if (this.id === "easyDifficulty"){
-        this.classList.toggle('borderColor')
-    } else if (this.id === "mediumDifficulty") {
-        this.classList.toggle('borderColor')
-    } else if (this.id === "hardDifficulty") {
-        this.classList.toggle('borderColor')
-    } 
-    return
+            threeByThreeButton.classList.remove('borderColor')
+            threeByThreeGrid.classList.add('iAmHiddenNow')
+
+            fourByFourButton.classList.remove('borderColor')
+            fourByFourGrid.classList.add('iAmHiddenNow')
+
+            fiveByFiveButton.classList.remove('borderColor')
+            fiveByFiveGrid.classList.add('iAmHiddenNow')
+            
+        } else if (pressedButton === "easyDifficulty") {
+            threeByThreeButton.classList.toggle('borderColor')
+            threeByThreeGrid.classList.toggle('iAmHiddenNow')
+
+            twoByTwoButton.classList.remove('borderColor')
+            twoByTwoGrid.classList.add('iAmHiddenNow')
+
+            fourByFourButton.classList.remove('borderColor')
+            fourByFourGrid.classList.add('iAmHiddenNow')
+
+            fiveByFiveButton.classList.remove('borderColor')
+            fiveByFiveGrid.classList.add('iAmHiddenNow')
+
+        } else if (pressedButton === "mediumDifficulty") {
+            fourByFourButton.classList.toggle('borderColor')
+            fourByFourGrid.classList.toggle('iAmHiddenNow')
+
+            twoByTwoButton.classList.remove('borderColor')
+            twoByTwoGrid.classList.add('iAmHiddenNow')
+
+            threeByThreeButton.classList.remove('borderColor')
+            threeByThreeGrid.classList.add('iAmHiddenNow')
+
+            fiveByFiveButton.classList.remove('borderColor')
+            fiveByFiveGrid.classList.add('iAmHiddenNow')
+
+        } else if (pressedButton === "hardDifficulty") {
+            fiveByFiveButton.classList.toggle('borderColor')
+            fiveByFiveGrid.classList.toggle('iAmHiddenNow')
+
+            twoByTwoButton.classList.remove('borderColor')
+            twoByTwoGrid.classList.add('iAmHiddenNow')
+
+            threeByThreeButton.classList.remove('borderColor')
+            threeByThreeGrid.classList.add('iAmHiddenNow')
+
+            fourByFourButton.classList.remove('borderColor')
+            fourByFourGrid.classList.add('iAmHiddenNow')
+    }
 }
 
 //function for instruction dialog box w/ instruction button
@@ -140,9 +170,12 @@ function closeInstructions() {
 
 
 function playGame() {
-let timeLeft = 15
-let timerId = setInterval(countdown, 1000)
+
+    startButton.classList.add('prevent');
+
     if (twoByTwoButton.id === 'practiceDifficulty' && twoByTwoButton.classList.contains('borderColor')) {
+        let timeLeft = 15
+        let timerId = setInterval(countdown, 1000)
         function countdown() {
             if (timeLeft == -1) {
                 clearTimeout(timerId);
@@ -156,50 +189,49 @@ let timerId = setInterval(countdown, 1000)
                 timer.innerHTML = `Time Remaining: ${timeLeft} seconds`;
                 timeLeft--;
             }
-        } 
-                let shuffleNotesTwoByTwo = twoByTwoNotes.sort(() => (Math.random() > .5) ? 2 : -1);
-                    for (let object = 0; object < twoByTwoNotes.length; object++) {
-                        let musicNote = document.createElement('div');
-                        musicNote.className = 'game-object-2by2';
-                        let musicNoteSrc = shuffleNotesTwoByTwo[object]
-                        if ([object] < 4) { 
-                            twoByTwoGrid.appendChild(musicNote);
-                            musicNote.addEventListener('click', function() {
-                                musicNoteSrc.play()
-                                this.classList.add('change')
-                                    if (userSelectionOne === null && userSelectionTwo === null) {
-                                        userSelectionOne = twoByTwoNotes[object].src
-                                        userSelectedObjectOne = this
-                                    } else if (userSelectionTwo === null  && this !== userSelectedObjectOne) {
-                                        userSelectionTwo = twoByTwoNotes[object].src
-                                        userSelectedObjectTwo = this
-                                        if (userSelectionOne === userSelectionTwo) {
-                                            userSelectedObjectOne.classList.add('vanish');
-                                            userSelectedObjectTwo.classList.add('vanish');
-                                            userSelectedObjectOne.classList.add('win')
-                                            userSelectedObjectTwo.classList.add('win')
-                                            userSelectionOne = null
-                                            userSelectionTwo = null
+        } let shuffleNotesTwoByTwo = twoByTwoNotes.sort(() => (Math.random() > .5) ? 2 : -1);
+            for (let object = 0; object < twoByTwoNotes.length; object++) {
+                let musicNote = document.createElement('div');
+                musicNote.className = 'game-object-2by2';
+                let musicNoteSrc = shuffleNotesTwoByTwo[object]
+                if ([object] < 4) { 
+                    twoByTwoGrid.appendChild(musicNote);
+                    musicNote.addEventListener('click', function() {
+                        musicNoteSrc.play()
+                        this.classList.add('change')
+                            if (userSelectionOne === null && userSelectionTwo === null) {
+                                userSelectionOne = twoByTwoNotes[object].src
+                                userSelectedObjectOne = this
+                            } else if (userSelectionTwo === null  && this !== userSelectedObjectOne) {
+                                userSelectionTwo = twoByTwoNotes[object].src
+                                userSelectedObjectTwo = this
+                                if (userSelectionOne === userSelectionTwo) {
+                                    userSelectedObjectOne.classList.add('vanish');
+                                    userSelectedObjectTwo.classList.add('vanish');
+                                    userSelectedObjectOne.classList.add('win')
+                                    userSelectedObjectTwo.classList.add('win')
+                                    userSelectionOne = null
+                                    userSelectionTwo = null
 
-                                            if(document.querySelectorAll('.win').length === twoByTwoNotes.length) {
-                                                winDialog.showModal()
-                                                clearTimeout(timerId)
-                                                winButton.addEventListener('click', function()  {
-                                                    winDialog.close();
-                                                    location.reload();
-                                                })
-                                            }   
+                                    if(document.querySelectorAll('.win').length === twoByTwoNotes.length) {
+                                        winDialog.showModal()
+                                        clearTimeout(timerId)
+                                        winButton.addEventListener('click', function()  {
+                                            winDialog.close();
+                                            location.reload();
+                                        })
+                                    }   
 
-                                        } else if (userSelectionOne !== userSelectionTwo) {
-                                            userSelectedObjectOne.classList.remove('change')
-                                            userSelectedObjectTwo.classList.remove('change')
-                                            userSelectionOne = null
-                                            userSelectionTwo = null 
-                                        }
-                                    }
-                            })
-                        }
-                    }
+                                } else if (userSelectionOne !== userSelectionTwo) {
+                                    userSelectedObjectOne.classList.remove('change')
+                                    userSelectedObjectTwo.classList.remove('change')
+                                    userSelectionOne = null
+                                    userSelectionTwo = null 
+                                }
+                            }
+                    })
+                }
+            }
     } else if (threeByThreeButton.id === 'easyDifficulty' && threeByThreeButton.classList.contains('borderColor')) {
         let timeLeft = 15
         let timerId = setInterval(countdown, 1000)
@@ -386,16 +418,24 @@ let timerId = setInterval(countdown, 1000)
     } 
 } 
 
+function checkIfGameShouldStart() {
+    if (startButton.classList == "button") {
+        playGame();
+    } else if (startButton.classList == "prevent"){
+        return;
+    }
+}
+
 
 
 
 /**********Event Listeners**********/
 
 //forEach loop to iterate through the buttons and add an event listener and a function to each.
-allTheButtons.forEach(button => button.addEventListener('click', amIHidden))
-allTheButtons.forEach(button => button.addEventListener('touch', amIHidden))
-allTheButtons.forEach(button => button.addEventListener('click', toggleColor))
-allTheButtons.forEach(button => button.addEventListener('touch', toggleColor))
+allTheButtons.forEach(button => button.addEventListener('click', difficultyButtons))
+allTheButtons.forEach(button => button.addEventListener('touch', difficultyButtons))
+// allTheButtons.forEach(button => button.addEventListener('click', toggleColor))
+// allTheButtons.forEach(button => button.addEventListener('touch', toggleColor))
 //adds an event listener to the instructions button 
 instructionButton.addEventListener('click', toggleInstructions)
 instructionButton.addEventListener('touch', toggleInstructions)
@@ -412,8 +452,8 @@ closeInstructionButtonThree.addEventListener('touch', closeInstructions)
 closeInstructionButtonFour.addEventListener('click', closeInstructions)
 closeInstructionButtonFour.addEventListener('touch', closeInstructions)
 //add an event listener to the start button
-startButton.addEventListener('click', playGame)
-startButton.addEventListener('touch', playGame)
+startButton.addEventListener('click', checkIfGameShouldStart)
+startButton.addEventListener('touch', checkIfGameShouldStart)
 //add an event listener to the restart button 
 restartButton.addEventListener('click', restart)
 restartButton.addEventListener('touch', restart)
