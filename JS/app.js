@@ -23,6 +23,7 @@ const fourByFourNotes = [cNote, cNote, cSharpNote, cSharpNote, dNote, dNote, dSh
 const fiveByFiveNotes = [cNote, cNote, cSharpNote, cSharpNote, dNote, dNote, dSharpNote, dSharpNote, eNote, eNote, fNote, fNote, fSharpNote, fSharpNote, gNote, gNote, gSharpNote, gSharpNote, aNote, aNote, aSharpNote, aSharpNote, bNote, bNote]
 
 /**********Variables**********/
+
 let userSelectionOne = null
 let userSelectionTwo = null
 
