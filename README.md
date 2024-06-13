@@ -27,7 +27,7 @@ Well with all of that said. without furtherado, I present you. **Unsion**.
 
 ## Getting Started: 
 
-Link to **Unison**: 
+Link to **[Unison](https://sleeper9235.github.io/unison-concentration-game/)**
 
 The instructions are more interative read in the game and recommend reading there.
 
@@ -60,4 +60,4 @@ links to draft materials:
 
 4. I would like to make a "high score" board, that solely keeps track of the attempts made on the current interation of the game. (resets on refresh)
 
-5. address any gramatical errors
+5. I would like to address any gramatical errors still present
