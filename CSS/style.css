@@ -94,6 +94,13 @@ ul {
     border-radius: 25px;
 }
 
+#instructionBoxFive {
+    width: 300px;
+    border: solid 7.5px #846267;
+    background-color: #E0C1B3;
+    border-radius: 25px;
+}
+
 #continueButtonOne {
     margin-top: 5px;
     background-color:#D89A9E;
@@ -119,6 +126,14 @@ ul {
 }
 
 #continueButtonFour {
+    margin-top: 5px;
+    background-color:#D89A9E;
+    border: solid 5px #846267;
+    padding: 7px;
+    border-radius: 10px;
+}
+
+#continueButtonFive {
     margin-top: 5px;
     background-color:#D89A9E;
     border: solid 5px #846267;

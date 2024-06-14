@@ -15,28 +15,25 @@ const bNote = new Audio("assets/audio/B.mp3")
 
 //Notes in each difficulty array
 const twoByTwoNotes = [cNote, cNote, cSharpNote, cSharpNote]
-
 const threeByThreeNotes = [cNote, cNote, cSharpNote, cSharpNote, dNote, dNote, dSharpNote, dSharpNote]
-
 const fourByFourNotes = [cNote, cNote, cSharpNote, cSharpNote, dNote, dNote, dSharpNote, dSharpNote, eNote, eNote, fNote, fNote, fSharpNote, fSharpNote, gNote, gNote]
-
 const fiveByFiveNotes = [cNote, cNote, cSharpNote, cSharpNote, dNote, dNote, dSharpNote, dSharpNote, eNote, eNote, fNote, fNote, fSharpNote, fSharpNote, gNote, gNote, gSharpNote, gSharpNote, aNote, aNote, aSharpNote, aSharpNote, bNote, bNote]
 
 /**********Variables**********/
-
 let userSelectionOne = null
 let userSelectionTwo = null
 
 /*********Cached DOM elements**********/
-
 //grabs the instruction dialog box one
 const instructionDialogOne = document.getElementById('instructionBoxOne')
 //grabs the instruction dialog box two
 const instructionDialogTwo = document.getElementById('instructionBoxTwo')
 //grabs the instruction dialog box three
 const instructionDialogThree = document.getElementById('instructionBoxThree')
-//grabs the instruction dialog box three
+//grabs the instruction dialog box four
 const instructionDialogFour = document.getElementById('instructionBoxFour')
+//grabs the instruction dialog box five
+const instructionDialogFive = document.getElementById('instructionBoxFive')
 //grabs the instruction button
 const instructionButton = document.querySelector('#instruction')
 //grab the win dialog box 
@@ -53,6 +50,8 @@ const closeInstructionButtonTwo = document.getElementById('continueButtonTwo')
 const closeInstructionButtonThree = document.getElementById('continueButtonThree')
 //grab the close button in the 4th instructions popup box
 const closeInstructionButtonFour = document.getElementById('continueButtonFour')
+//grabs the close button in the 5th instructions popup box
+const closeInstructionButtonFive = document.getElementById('continueButtonFive')
 //grabs the youLose dialog box
 const youLoseBox = document.getElementById('youLose')
 //grabs the button in the youLose dialog box
@@ -61,7 +60,7 @@ const loseButton = document.getElementById('loseButton')
 const checkBox = document.getElementById('instructionsCheckBox')
 //grabs all the buttons by class name
 const allTheButtons = document.querySelectorAll('.difficulty')
-//grab all elements by ID
+//grab all button elements by ID
 const twoByTwoButton = document.getElementById('practiceDifficulty')
 const threeByThreeButton = document.getElementById('easyDifficulty')
 const fourByFourButton = document.getElementById('mediumDifficulty')
@@ -81,9 +80,7 @@ const startButton = document.querySelector('#start')
 //grabs the timer 
 const timer = document.getElementById('timer')
 
-
 /**********Functions**********/
-
 //function restart button 
 function restart() {
     location.reload();
@@ -157,17 +154,18 @@ function closeInstructions() {
         instructionDialogTwo.showModal();
         instructionDialogOne.close();
     } else if (this.id === "continueButtonTwo") {
-            instructionDialogThree.showModal();
-            instructionDialogTwo.close();      
+        instructionDialogThree.showModal();
+        instructionDialogTwo.close();      
     } else if (this.id === "continueButtonThree") {
-            instructionDialogThree.close();
-            instructionDialogFour.showModal();
-    } else {
+        instructionDialogThree.close();
+        instructionDialogFour.showModal();
+    } else if (this.id === "continueButtonFour") {
         instructionDialogFour.close();
+        instructionDialogFive.showModal();
+    } else {
+        instructionDialogFive.close();
     }
 }
-
-
 
 function playGame() {
     startButton.classList.add('prevent');
@@ -175,9 +173,9 @@ function playGame() {
     if (twoByTwoButton.classList.contains('borderColor') || threeByThreeButton.classList.contains('borderColor')) {
         timeLeft = 15
     } else if (fourByFourButton.classList.contains('borderColor')) {
-        timeLeft = 20
-    } else {
         timeLeft = 30
+    } else {
+        timeLeft = 45
     }
     let timerId = setInterval(countdown, 1000)
     function countdown() {
@@ -197,9 +195,9 @@ function playGame() {
         if (twoByTwoButton.classList.contains('borderColor') || threeByThreeButton.classList.contains('borderColor')) {
             timeLeft += 2
         } else if (fourByFourButton.classList.contains('borderColor')) {
-            timeLeft += 4
+            timeLeft += 3
         } else {
-            timeLeft += 6
+            timeLeft += 4
         }
     }
     if (twoByTwoButton.id === 'practiceDifficulty' && twoByTwoButton.classList.contains('borderColor')) {
@@ -383,16 +381,10 @@ function checkIfGameShouldStart() {
     }
 }
 
-
-
-
 /**********Event Listeners**********/
-
 //forEach loop to iterate through the buttons and add an event listener and a function to each.
 allTheButtons.forEach(button => button.addEventListener('click', difficultyButtons))
 allTheButtons.forEach(button => button.addEventListener('touch', difficultyButtons))
-// allTheButtons.forEach(button => button.addEventListener('click', toggleColor))
-// allTheButtons.forEach(button => button.addEventListener('touch', toggleColor))
 //adds an event listener to the instructions button 
 instructionButton.addEventListener('click', toggleInstructions)
 instructionButton.addEventListener('touch', toggleInstructions)
@@ -408,6 +400,9 @@ closeInstructionButtonThree.addEventListener('touch', closeInstructions)
 //adds an event listener to the close button four
 closeInstructionButtonFour.addEventListener('click', closeInstructions)
 closeInstructionButtonFour.addEventListener('touch', closeInstructions)
+//adds an event listener to the close button five
+closeInstructionButtonFive.addEventListener('click', closeInstructions)
+closeInstructionButtonFive.addEventListener('touch', closeInstructions)
 //add an event listener to the start button
 startButton.addEventListener('click', checkIfGameShouldStart)
 startButton.addEventListener('touch', checkIfGameShouldStart)

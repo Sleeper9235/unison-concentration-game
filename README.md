@@ -36,6 +36,7 @@ The instructions are more interative read in the game and recommend reading ther
 ![html banner](assets/photos/instructionPageOne.png) 
 ![html banner](assets/photos/instructionPageTwo.png)
 ![html banner](assets/photos/instructionPageThree.png)
+![html banner](assets/photos/instructionPageFour.png)
 
 links to draft materials:
 1. [Pseudocode](assets/documents/Pseudocode.docx)
