@@ -58,6 +58,6 @@ links to draft materials:
 
 3. I would like to flush out the code a little more, update from flex to grid. As well as make the win screen feel more rewarding.
 
-4. I would like to make a "high score" board, that solely keeps track of the attempts made on the current interation of the game. (resets on refresh)
+4. I would like to make a "high score" board, that solely keeps track of the attempts made on the current interation of the game. (resets on refresh currently)
 
 5. I would like to address any gramatical errors still present

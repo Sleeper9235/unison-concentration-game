@@ -92,58 +92,57 @@ function restart() {
 // simplified toggleColor and amIHidden to the difficultyButtons function. Also prevents overlapping of pressed buttons
 function difficultyButtons() {
     let pressedButton = this.id
-        console.log(pressedButton)
-        if (pressedButton === "practiceDifficulty") {
-            twoByTwoButton.classList.toggle('borderColor')
-            twoByTwoGrid.classList.toggle('iAmHiddenNow')
+    if (pressedButton === "practiceDifficulty") {
+        twoByTwoButton.classList.toggle('borderColor')
+        twoByTwoGrid.classList.toggle('iAmHiddenNow')
 
-            threeByThreeButton.classList.remove('borderColor')
-            threeByThreeGrid.classList.add('iAmHiddenNow')
+        threeByThreeButton.classList.remove('borderColor')
+        threeByThreeGrid.classList.add('iAmHiddenNow')
 
-            fourByFourButton.classList.remove('borderColor')
-            fourByFourGrid.classList.add('iAmHiddenNow')
+        fourByFourButton.classList.remove('borderColor')
+        fourByFourGrid.classList.add('iAmHiddenNow')
 
-            fiveByFiveButton.classList.remove('borderColor')
-            fiveByFiveGrid.classList.add('iAmHiddenNow')
-            
-        } else if (pressedButton === "easyDifficulty") {
-            threeByThreeButton.classList.toggle('borderColor')
-            threeByThreeGrid.classList.toggle('iAmHiddenNow')
+        fiveByFiveButton.classList.remove('borderColor')
+        fiveByFiveGrid.classList.add('iAmHiddenNow')
+        
+    } else if (pressedButton === "easyDifficulty") {
+        threeByThreeButton.classList.toggle('borderColor')
+        threeByThreeGrid.classList.toggle('iAmHiddenNow')
 
-            twoByTwoButton.classList.remove('borderColor')
-            twoByTwoGrid.classList.add('iAmHiddenNow')
+        twoByTwoButton.classList.remove('borderColor')
+        twoByTwoGrid.classList.add('iAmHiddenNow')
 
-            fourByFourButton.classList.remove('borderColor')
-            fourByFourGrid.classList.add('iAmHiddenNow')
+        fourByFourButton.classList.remove('borderColor')
+        fourByFourGrid.classList.add('iAmHiddenNow')
 
-            fiveByFiveButton.classList.remove('borderColor')
-            fiveByFiveGrid.classList.add('iAmHiddenNow')
+        fiveByFiveButton.classList.remove('borderColor')
+        fiveByFiveGrid.classList.add('iAmHiddenNow')
 
-        } else if (pressedButton === "mediumDifficulty") {
-            fourByFourButton.classList.toggle('borderColor')
-            fourByFourGrid.classList.toggle('iAmHiddenNow')
+    } else if (pressedButton === "mediumDifficulty") {
+        fourByFourButton.classList.toggle('borderColor')
+        fourByFourGrid.classList.toggle('iAmHiddenNow')
 
-            twoByTwoButton.classList.remove('borderColor')
-            twoByTwoGrid.classList.add('iAmHiddenNow')
+        twoByTwoButton.classList.remove('borderColor')
+        twoByTwoGrid.classList.add('iAmHiddenNow')
 
-            threeByThreeButton.classList.remove('borderColor')
-            threeByThreeGrid.classList.add('iAmHiddenNow')
+        threeByThreeButton.classList.remove('borderColor')
+        threeByThreeGrid.classList.add('iAmHiddenNow')
 
-            fiveByFiveButton.classList.remove('borderColor')
-            fiveByFiveGrid.classList.add('iAmHiddenNow')
+        fiveByFiveButton.classList.remove('borderColor')
+        fiveByFiveGrid.classList.add('iAmHiddenNow')
 
-        } else if (pressedButton === "hardDifficulty") {
-            fiveByFiveButton.classList.toggle('borderColor')
-            fiveByFiveGrid.classList.toggle('iAmHiddenNow')
+    } else if (pressedButton === "hardDifficulty") {
+        fiveByFiveButton.classList.toggle('borderColor')
+        fiveByFiveGrid.classList.toggle('iAmHiddenNow')
 
-            twoByTwoButton.classList.remove('borderColor')
-            twoByTwoGrid.classList.add('iAmHiddenNow')
+        twoByTwoButton.classList.remove('borderColor')
+        twoByTwoGrid.classList.add('iAmHiddenNow')
 
-            threeByThreeButton.classList.remove('borderColor')
-            threeByThreeGrid.classList.add('iAmHiddenNow')
+        threeByThreeButton.classList.remove('borderColor')
+        threeByThreeGrid.classList.add('iAmHiddenNow')
 
-            fourByFourButton.classList.remove('borderColor')
-            fourByFourGrid.classList.add('iAmHiddenNow')
+        fourByFourButton.classList.remove('borderColor')
+        fourByFourGrid.classList.add('iAmHiddenNow')
     }
 }
 
@@ -171,136 +170,121 @@ function closeInstructions() {
 
 
 function playGame() {
-
     startButton.classList.add('prevent');
-
-        let timeLeft = 0
-
-        if (twoByTwoButton.classList.contains('borderColor') || threeByThreeButton.classList.contains('borderColor')) {
-            timeLeft = 15
-        } else if (fourByFourButton.classList.contains('borderColor')) {
-            timeLeft = 20
+    let timeLeft = 0
+    if (twoByTwoButton.classList.contains('borderColor') || threeByThreeButton.classList.contains('borderColor')) {
+        timeLeft = 15
+    } else if (fourByFourButton.classList.contains('borderColor')) {
+        timeLeft = 20
+    } else {
+        timeLeft = 30
+    }
+    let timerId = setInterval(countdown, 1000)
+    function countdown() {
+        if (timeLeft == -1) {
+            clearTimeout(timerId);
+            youLoseBox.showModal()
+            loseButton.addEventListener('click', function()  {
+                youLoseBox.close();
+                location.reload();
+            }) 
         } else {
-            timeLeft = 30
+            timer.innerHTML = `Time Remaining: ${timeLeft} seconds`;
+            timeLeft--;
         }
-        
-        let timerId = setInterval(countdown, 1000)
-
-        function countdown() {
-            if (timeLeft == -1) {
-                clearTimeout(timerId);
-                youLoseBox.showModal()
-                clearTimeout(timerId)
-                loseButton.addEventListener('click', function()  {
-                    youLoseBox.close();
-                    location.reload();
-                }) 
-            } else {
-                timer.innerHTML = `Time Remaining: ${timeLeft} seconds`;
-                timeLeft--;
-            }
-        } 
-        
-        function increaseTimer() {
-            if (twoByTwoButton.classList.contains('borderColor') || threeByThreeButton.classList.contains('borderColor')) {
-                timeLeft += 2
-            } else if (fourByFourButton.classList.contains('borderColor')) {
-                timeLeft += 4
-            } else {
-                timeLeft += 6
-            }
+    } 
+    function increaseTimer() {
+        if (twoByTwoButton.classList.contains('borderColor') || threeByThreeButton.classList.contains('borderColor')) {
+            timeLeft += 2
+        } else if (fourByFourButton.classList.contains('borderColor')) {
+            timeLeft += 4
+        } else {
+            timeLeft += 6
         }
-
-        
-     if (twoByTwoButton.id === 'practiceDifficulty' && twoByTwoButton.classList.contains('borderColor')) {
+    }
+    if (twoByTwoButton.id === 'practiceDifficulty' && twoByTwoButton.classList.contains('borderColor')) {
         let shuffleNotesTwoByTwo = twoByTwoNotes.sort(() => (Math.random() > .5) ? 2 : -1);
-            for (let object = 0; object < twoByTwoNotes.length; object++) {
-                let musicNote = document.createElement('div');
-                musicNote.className = 'game-object-2by2';
-                let musicNoteSrc = shuffleNotesTwoByTwo[object]
-                if ([object] < 4) { 
-                    twoByTwoGrid.appendChild(musicNote);
-                    musicNote.addEventListener('click', function() {
-                        musicNoteSrc.play()
-                        this.classList.add('change')
-                            if (userSelectionOne === null && userSelectionTwo === null) {
-                                userSelectionOne = twoByTwoNotes[object].src
-                                userSelectedObjectOne = this
-                            } else if (userSelectionTwo === null  && this !== userSelectedObjectOne) {
-                                userSelectionTwo = twoByTwoNotes[object].src
-                                userSelectedObjectTwo = this
-                                if (userSelectionOne === userSelectionTwo) {
-                                    userSelectedObjectOne.classList.add('vanish');
-                                    userSelectedObjectTwo.classList.add('vanish');
-                                    userSelectedObjectOne.classList.add('win')
-                                    userSelectedObjectTwo.classList.add('win')
-                                    increaseTimer();
-                                    userSelectionOne = null
-                                    userSelectionTwo = null
+        for (let object = 0; object < twoByTwoNotes.length; object++) {
+            let musicNote = document.createElement('div');
+            musicNote.className = 'game-object-2by2';
+            let musicNoteSrc = shuffleNotesTwoByTwo[object]
+            twoByTwoGrid.appendChild(musicNote);
+            musicNote.addEventListener('click', function() {
+                musicNoteSrc.play()
+                this.classList.add('change')
+                if (userSelectionOne === null && userSelectionTwo === null) {
+                    userSelectionOne = twoByTwoNotes[object].src
+                    userSelectedObjectOne = this
+                } else if (userSelectionTwo === null  && this !== userSelectedObjectOne) {
+                    userSelectionTwo = twoByTwoNotes[object].src
+                    userSelectedObjectTwo = this
+                    if (userSelectionOne === userSelectionTwo) {
+                        userSelectedObjectOne.classList.add('vanish');
+                        userSelectedObjectTwo.classList.add('vanish');
+                        userSelectedObjectOne.classList.add('win')
+                        userSelectedObjectTwo.classList.add('win')
+                        increaseTimer();
+                        userSelectionOne = null
+                        userSelectionTwo = null
 
-                                    if(document.querySelectorAll('.win').length === twoByTwoNotes.length) {
-                                        winDialog.showModal()
-                                        clearTimeout(timerId)
-                                        winButton.addEventListener('click', function()  {
-                                            winDialog.close();
-                                            location.reload();
-                                        })
-                                    }   
+                        if(document.querySelectorAll('.win').length === twoByTwoNotes.length) {
+                            winDialog.showModal()
+                            clearTimeout(timerId)
+                            winButton.addEventListener('click', function()  {
+                                winDialog.close();
+                                location.reload();
+                            })
+                        }   
 
-                                } else if (userSelectionOne !== userSelectionTwo) {
-                                    userSelectedObjectOne.classList.remove('change')
-                                    userSelectedObjectTwo.classList.remove('change')
-                                    userSelectionOne = null
-                                    userSelectionTwo = null 
-                                }
-                            }
-                    })
+                    } else if (userSelectionOne !== userSelectionTwo) {
+                        userSelectedObjectOne.classList.remove('change')
+                        userSelectedObjectTwo.classList.remove('change')
+                        userSelectionOne = null
+                        userSelectionTwo = null 
+                    }
                 }
-            }
+            })
+        }
     } else if (threeByThreeButton.id === 'easyDifficulty' && threeByThreeButton.classList.contains('borderColor')) {
         let shuffleNotesThreeByThree = threeByThreeNotes.sort(() => (Math.random() > .5) ? 2 : -1);
         for ( let object = 0; object < threeByThreeNotes.length; object++) {
             let musicNote = document.createElement('div');
             musicNote.className = 'game-object-3by3';
             let musicNoteSrc = shuffleNotesThreeByThree[object]
-            if ([object] < 8) { 
-                threeByThreeGrid.appendChild(musicNote);
-                musicNote.addEventListener('click', function() {
-                    musicNoteSrc.play()
-                    this.classList.add('change')
-                        if (userSelectionOne === null) {
-                            userSelectionOne = threeByThreeNotes[object].src
-                            userSelectedObjectOne = this
-                        } else if (userSelectionTwo === null  && this !== userSelectedObjectOne) {
-                            userSelectionTwo = threeByThreeNotes[object].src
-                            userSelectedObjectTwo = this
-                            if (userSelectionOne === userSelectionTwo) {
-                                userSelectedObjectOne.classList.add('vanish');
-                                userSelectedObjectTwo.classList.add('vanish');
-                                userSelectedObjectOne.classList.add('win')
-                                userSelectedObjectTwo.classList.add('win')
-                                userSelectionOne = null
-                                userSelectionTwo = null
-                                increaseTimer();
-                                if(document.querySelectorAll('.win').length === threeByThreeNotes.length) {
-                                    winDialog.showModal()
-                                    clearTimeout(timerId)
-                                    winButton.addEventListener('click', function()  {
-                                        winDialog.close();
-                                        location.reload();
-                                    })
-                                }   
-
-                            } else if (userSelectionOne !== userSelectionTwo) {
-                                userSelectedObjectOne.classList.remove('change')
-                                userSelectedObjectTwo.classList.remove('change')
-                                userSelectionOne = null
-                                userSelectionTwo = null 
-
-                            }
-                        }
-                })
-            }
+            threeByThreeGrid.appendChild(musicNote);
+            musicNote.addEventListener('click', function() {
+                musicNoteSrc.play()
+                this.classList.add('change')
+                if (userSelectionOne === null) {
+                    userSelectionOne = threeByThreeNotes[object].src
+                    userSelectedObjectOne = this
+                } else if (userSelectionTwo === null  && this !== userSelectedObjectOne) {
+                    userSelectionTwo = threeByThreeNotes[object].src
+                    userSelectedObjectTwo = this
+                    if (userSelectionOne === userSelectionTwo) {
+                        userSelectedObjectOne.classList.add('vanish');
+                        userSelectedObjectTwo.classList.add('vanish');
+                        userSelectedObjectOne.classList.add('win')
+                        userSelectedObjectTwo.classList.add('win')
+                        userSelectionOne = null
+                        userSelectionTwo = null
+                        increaseTimer();
+                        if(document.querySelectorAll('.win').length === threeByThreeNotes.length) {
+                            winDialog.showModal()
+                            clearTimeout(timerId)
+                            winButton.addEventListener('click', function()  {
+                                winDialog.close();
+                                location.reload();
+                            })
+                        }   
+                    } else if (userSelectionOne !== userSelectionTwo) {
+                        userSelectedObjectOne.classList.remove('change')
+                        userSelectedObjectTwo.classList.remove('change')
+                        userSelectionOne = null
+                        userSelectionTwo = null 
+                   }
+                }
+            })
         }
     } else if (fourByFourButton.id === 'mediumDifficulty' && fourByFourButton.classList.contains('borderColor')) {
         let shuffleNotesFourByFour = fourByFourNotes.sort(() => (Math.random() > .5) ? 2 : -1);
@@ -313,86 +297,82 @@ function playGame() {
             }musicNote.addEventListener('click', function() {
                 musicNoteSrc.play()
                 this.classList.add('change')
-                    if (userSelectionOne === null) {
-                        userSelectionOne = fourByFourNotes[object].src
-                        userSelectedObjectOne = this
-                    } else if (userSelectionTwo === null  && this !== userSelectedObjectOne) {
-                        userSelectionTwo = fourByFourNotes[object].src
-                        userSelectedObjectTwo = this
-                        if (userSelectionOne === userSelectionTwo) {
-                            userSelectedObjectOne.classList.add('vanish');
-                            userSelectedObjectTwo.classList.add('vanish');
-                            userSelectedObjectOne.classList.add('win')
-                            userSelectedObjectTwo.classList.add('win')
-                            increaseTimer();
-                            userSelectionOne = null
-                            userSelectionTwo = null
+                if (userSelectionOne === null) {
+                    userSelectionOne = fourByFourNotes[object].src
+                    userSelectedObjectOne = this
+                } else if (userSelectionTwo === null  && this !== userSelectedObjectOne) {
+                    userSelectionTwo = fourByFourNotes[object].src
+                    userSelectedObjectTwo = this
+                    if (userSelectionOne === userSelectionTwo) {
+                        userSelectedObjectOne.classList.add('vanish');
+                        userSelectedObjectTwo.classList.add('vanish');
+                        userSelectedObjectOne.classList.add('win')
+                        userSelectedObjectTwo.classList.add('win')
+                        increaseTimer();
+                        userSelectionOne = null
+                        userSelectionTwo = null
 
-                            if(document.querySelectorAll('.win').length === fourByFourNotes.length) {
-                                winDialog.showModal()
-                                clearTimeout(timerId)
-                                winButton.addEventListener('click', function()  {
-                                    winDialog.close();
-                                    location.reload();
-                                })
-                            }   
+                        if(document.querySelectorAll('.win').length === fourByFourNotes.length) {
+                            winDialog.showModal()
+                            clearTimeout(timerId)
+                            winButton.addEventListener('click', function()  {
+                                winDialog.close();
+                                location.reload();
+                            })
+                        }   
 
-                        } else if (userSelectionOne !== userSelectionTwo) {
-                            userSelectedObjectOne.classList.remove('change')
-                            userSelectedObjectTwo.classList.remove('change')
-                            userSelectionOne = null
-                            userSelectionTwo = null 
-                        } 
-                     }
-                })
-            }
+                    } else if (userSelectionOne !== userSelectionTwo) {
+                        userSelectedObjectOne.classList.remove('change')
+                        userSelectedObjectTwo.classList.remove('change')
+                        userSelectionOne = null
+                        userSelectionTwo = null 
+                    } 
+                }
+            })
+        }
     } else if (fiveByFiveButton.id === 'hardDifficulty' && fiveByFiveButton.classList.contains('borderColor')) {
         let shuffleNotesFiveByFive = fiveByFiveNotes.sort(() => (Math.random() > .5) ? 2 : -1);
         for ( let object = 0; object < fiveByFiveNotes.length; object++) {
             let musicNote = document.createElement('div');
             musicNote.className = 'game-object-5by5';
             let musicNoteSrc = shuffleNotesFiveByFive[object]
-            if ([object] < 24) { 
-                fiveByFiveGrid.appendChild(musicNote);
-                musicNote.addEventListener('click', function() {
-                    musicNoteSrc.play()
-                    this.classList.add('change')
-                        if (userSelectionOne === null) {
-                            userSelectionOne = fiveByFiveNotes[object].src
-                            userSelectedObjectOne = this
-                        } else if (userSelectionTwo === null  && this !== userSelectedObjectOne) {
-                            userSelectionTwo = fiveByFiveNotes[object].src
-                            userSelectedObjectTwo = this
-                            if (userSelectionOne === userSelectionTwo) {
-                                userSelectedObjectOne.classList.add('vanish');
-                                userSelectedObjectTwo.classList.add('vanish');
-                                userSelectedObjectOne.classList.add('win')
-                                userSelectedObjectTwo.classList.add('win')
-                                increaseTimer();
-                                userSelectionOne = null
-                                userSelectionTwo = null
+            fiveByFiveGrid.appendChild(musicNote);
+            musicNote.addEventListener('click', function() {
+                musicNoteSrc.play()
+                this.classList.add('change')
+                if (userSelectionOne === null) {
+                    userSelectionOne = fiveByFiveNotes[object].src
+                    userSelectedObjectOne = this
+                } else if (userSelectionTwo === null  && this !== userSelectedObjectOne) {
+                    userSelectionTwo = fiveByFiveNotes[object].src
+                    userSelectedObjectTwo = this
+                    if (userSelectionOne === userSelectionTwo) {
+                        userSelectedObjectOne.classList.add('vanish');
+                        userSelectedObjectTwo.classList.add('vanish');
+                        userSelectedObjectOne.classList.add('win')
+                        userSelectedObjectTwo.classList.add('win')
+                        increaseTimer();
+                        userSelectionOne = null
+                        userSelectionTwo = null
 
-                                if(document.querySelectorAll('.win').length === fiveByFiveNotes.length) {
-                                    winDialog.showModal()
-                                    clearTimeout(timerId)
-                                    winButton.addEventListener('click', function()  {
-                                        winDialog.close();
-                                        location.reload();
-                                    })
-                                }   
-
-                            } else if (userSelectionOne !== userSelectionTwo) {
-                                userSelectedObjectOne.classList.remove('change')
-                                userSelectedObjectTwo.classList.remove('change')
-                                userSelectionOne = null
-                                userSelectionTwo = null 
-
-                            }
-                        }
-                })
-            }
+                        if(document.querySelectorAll('.win').length === fiveByFiveNotes.length) {
+                            winDialog.showModal()
+                            clearTimeout(timerId)
+                            winButton.addEventListener('click', function()  {
+                                winDialog.close();
+                                location.reload();
+                            })
+                        }   
+                    } else if (userSelectionOne !== userSelectionTwo) {
+                        userSelectedObjectOne.classList.remove('change')
+                        userSelectedObjectTwo.classList.remove('change')
+                        userSelectionOne = null
+                        userSelectionTwo = null 
+                    }
+                }
+            })
         }
-    } 
+    }
 } 
 
 function checkIfGameShouldStart() {
