@@ -409,7 +409,3 @@ startButton.addEventListener('touch', checkIfGameShouldStart)
 //add an event listener to the restart button 
 restartButton.addEventListener('click', restart)
 restartButton.addEventListener('touch', restart)
-
-
-
-
