@@ -14,9 +14,9 @@ const aSharpNote = new Audio("assets/audio/As.mp3")
 const bNote = new Audio("assets/audio/B.mp3")
 
 //Notes in each difficulty array
-const twoByTwoNotes = [cNote, cNote, cSharpNote, cSharpNote]
-const threeByThreeNotes = [cNote, cNote, cSharpNote, cSharpNote, dNote, dNote, dSharpNote, dSharpNote]
-const fourByFourNotes = [cNote, cNote, cSharpNote, cSharpNote, dNote, dNote, dSharpNote, dSharpNote, eNote, eNote, fNote, fNote, fSharpNote, fSharpNote, gNote, gNote]
+const twoByTwoNotes = [cNote, cNote, dNote, dNote]
+const threeByThreeNotes = [cNote, cNote, dNote, dNote, eNote, eNote, fNote, fNote]
+const fourByFourNotes = [cNote, cNote, dNote, dNote, dSharpNote, dSharpNote, eNote, eNote, fNote, fNote, gNote, gNote, aNote, aNote,]
 const fiveByFiveNotes = [cNote, cNote, cSharpNote, cSharpNote, dNote, dNote, dSharpNote, dSharpNote, eNote, eNote, fNote, fNote, fSharpNote, fSharpNote, gNote, gNote, gSharpNote, gSharpNote, aNote, aNote, aSharpNote, aSharpNote, bNote, bNote]
 
 /**********Variables**********/
