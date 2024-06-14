@@ -62,3 +62,5 @@ links to draft materials:
 4. I would like to make a "high score" board, that solely keeps track of the attempts made on the current interation of the game. (resets on refresh currently)
 
 5. I would like to address any gramatical errors still present
+
+6. Would like to add a toggle(esk) switch that could toggle the inner HTML of the object and list the corresponding note e.g. assets/audio/a.mp3 would play the sound and show a huge A in the square before reverting to normal if the next selection made was incorrect. Would help learn to associate the sounds with the letter(corresponding note).
